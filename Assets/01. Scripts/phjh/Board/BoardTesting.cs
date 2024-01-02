@@ -36,9 +36,9 @@ public class BoardTesting : MonoBehaviour
         {
             for (var i = RowKey.A; i < RowKey.Semicolon; i++)
             {
-                KeyManager.Instance.Boards[(int)i].gameObject.SetActive(true);
+                KeyManager.Instance.MainBoard[(int)i].gameObject.SetActive(true);
+                KeyManager.Instance.AddConnectKeys(KeyManager.Instance.MainBoard[(int)i]);
             }
-            KeyManager.Instance.RefreshConnectKeys();
         }
     }
 
@@ -47,8 +47,8 @@ public class BoardTesting : MonoBehaviour
     {
         for(var i = StartKey; i <= EndKey; i++)
         {
-		    KeyManager.Instance.Boards[(int)i].DamageEvent(3, time, duration);
-		    KeyManager.Instance.Boards[(int)EndKey +    (int)StartKey - (int)i].DamageEvent(3, time, duration);
+		    KeyManager.Instance.MainBoard[(int)i].DamageEvent(3, time, duration);
+		    KeyManager.Instance.MainBoard[(int)EndKey +    (int)StartKey - (int)i].DamageEvent(3, time, duration);
             yield return new WaitForSeconds(time);
         }
 		AttackCoroutine = null;
@@ -58,8 +58,8 @@ public class BoardTesting : MonoBehaviour
 	{
 		for (var i = StartKey; i <= MiddleKey; i++)
 		{
-			KeyManager.Instance.Boards[(int)i].DamageEvent(3, time, duration);
-			KeyManager.Instance.Boards[(int)EndKey + (int)StartKey - (int)i].DamageEvent(3, time, duration);
+			KeyManager.Instance.MainBoard[(int)i].DamageEvent(3, time, duration);
+			KeyManager.Instance.MainBoard[(int)EndKey + (int)StartKey - (int)i].DamageEvent(3, time, duration);
 			yield return new WaitForSeconds(time);
 		}
 		AttackCoroutine = null;
