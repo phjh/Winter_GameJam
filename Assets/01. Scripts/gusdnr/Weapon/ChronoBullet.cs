@@ -16,11 +16,11 @@ public class ChronoBullet : PoolableMono
 
 	public override void Init()
 	{
-		//target = GameObject.Find("Target");
-		//Rigidbody2D rb = GetComponent<Rigidbody2D>();
+		target = GameObject.Find("Target");
+		Rigidbody2D rb = GetComponent<Rigidbody2D>();
 
-		//rb.velocity = (target.transform.position - transform.position).normalized * Speed;
-		//transform.LookAt(target.transform.position);
+		rb.velocity = (target.transform.position - transform.position).normalized * Speed;
+		transform.LookAt(target.transform.position);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)

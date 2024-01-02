@@ -36,6 +36,8 @@ public class BoardTesting : MonoBehaviour
         {
             for (var i = RowKey.A; i < RowKey.Semicolon; i++)
             {
+                //KeyManager.Instance.MainBoard[(int)RowKey.S].
+                
                 KeyManager.Instance.MainBoard[(int)i].gameObject.SetActive(true);
                 KeyManager.Instance.AddConnectKeys(KeyManager.Instance.MainBoard[(int)i]);
             }
