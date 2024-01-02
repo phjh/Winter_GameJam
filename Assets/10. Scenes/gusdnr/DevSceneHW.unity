@@ -498,7 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76fc6f533b2644348aa9f6476e2c0c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _poolingList: {fileID: 11400000, guid: 412f5c72e2380d644a6c2f4cc2247750, type: 2}
+  _poolingList: {fileID: 11400000, guid: 780bea00395840d42adc1d092f75e7f1, type: 2}
 --- !u!4 &105587051
 Transform:
   m_ObjectHideFlags: 0
@@ -5508,49 +5508,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a59a57aed702cf1409ac1106da181628, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Boards:
-  - {fileID: 438577206}
-  - {fileID: 152114637}
-  - {fileID: 917835438}
-  - {fileID: 1842014673}
-  - {fileID: 380678873}
-  - {fileID: 1257160377}
-  - {fileID: 2018799126}
-  - {fileID: 1950480392}
-  - {fileID: 104548140}
-  - {fileID: 188168176}
-  - {fileID: 38914317}
-  - {fileID: 1681049422}
-  - {fileID: 1294807040}
-  - {fileID: 114962722}
-  - {fileID: 2071677170}
-  - {fileID: 447303356}
-  - {fileID: 1987959363}
-  - {fileID: 137134728}
-  - {fileID: 584806081}
-  - {fileID: 1020968066}
-  - {fileID: 743269760}
-  - {fileID: 888802932}
-  - {fileID: 914845892}
-  - {fileID: 2081130664}
-  - {fileID: 681596256}
-  - {fileID: 1708700504}
-  - {fileID: 992149266}
-  - {fileID: 1535242205}
-  - {fileID: 1722714643}
-  - {fileID: 791360260}
-  - {fileID: 1480040556}
-  - {fileID: 2093036245}
-  - {fileID: 1055322416}
-  - {fileID: 1011756926}
-  - {fileID: 773719887}
-  - {fileID: 1723908197}
-  - {fileID: 1955751747}
-  - {fileID: 1719568287}
-  - {fileID: 280692141}
-  - {fileID: 1666068939}
-  - {fileID: 1322489482}
-  - {fileID: 993765336}
+  MainBoard: []
+  firstline: []
+  secondline: []
+  thirdline: []
+  fourthline: []
   DamageEffecter: {fileID: 8824240668074943121, guid: fdab3830c98aeea4e8490a3a915d522a, type: 3}
 --- !u!1 &1900374603
 GameObject:
