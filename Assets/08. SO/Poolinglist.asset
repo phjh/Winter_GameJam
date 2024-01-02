@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 75656a5a6a752234690e25f2301834fa, type: 3}
-  m_Name: PoolingList
+  m_Name: Poolinglist
   m_EditorClassIdentifier: 
   Pairs:
   - Prefab: {fileID: -2259938209097051686, guid: 747f1849a17b5e04ea5f2ed878978059, type: 3}
-    Count: 10
+    Count: 100
+  - Prefab: {fileID: 7373551071701059546, guid: fdab3830c98aeea4e8490a3a915d522a, type: 3}
+    Count: 100

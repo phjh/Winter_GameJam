@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Collections.LowLevel.Unsafe;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class KeyBase : MonoBehaviour
@@ -24,12 +26,20 @@ public class KeyBase : MonoBehaviour
     {
         connectedKeys = new List<KeyBase>();
 
-        foreach (var key in KeyManager.Instance.Boards)
+        foreach (var key in KeyManager.Instance.MainBoard)
         {
             if (Vector3.Distance(this.transform.position, key.transform.position) < 2f && InputKeyCode != key.InputKeyCode && key.gameObject.activeInHierarchy)
             {
                 connectedKeys.Add(key);
             }
+        }
+    }
+    public void DeleteConnectedKey()
+    {
+        connectedKeys = new List<KeyBase>();
+        foreach(var keys in connectedKeys)
+        {
+            keys.connectedKeys.Remove(this);
         }
     }
 
@@ -42,7 +52,6 @@ public class KeyBase : MonoBehaviour
             float color = Mathf.Lerp(1, 0, t);
             sp.color = new Color(1, color, color);
             t += Time.deltaTime/time;
-            Debug.Log(t);
             yield return null;
         }
         yield return new WaitForSeconds(0.1f);

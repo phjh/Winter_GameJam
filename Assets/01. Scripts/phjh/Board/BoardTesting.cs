@@ -15,21 +15,22 @@ public class BoardTesting : MonoBehaviour
         {
 			for (var i = RowKey.one; i <= RowKey.equal; i++)  //여기서 범위잡아주고
 			{//요안에서 조건쓰면됨
-				KeyManager.Instance.Boards[(int)i].DamageEvent(3, time, duration);
-			}
+                KeyManager.Instance.firstline[(int)i].DamageEvent(3, time, duration);
+                KeyManager.Instance.secondline[(int)i].DamageEvent(3, time, duration);
+                KeyManager.Instance.thirdline[(int)i].DamageEvent(3, time, duration);
+                KeyManager.Instance.fourthline[(int)i].DamageEvent(3, time, duration);
+            }
 			for (var i = RowKey.A; i <= RowKey.Semicolon; i++)  //여기서 범위잡아주고
             {//요안에서 조건쓰면됨
-                KeyManager.Instance.Boards[(int)i].DamageEvent(3,time,duration);
+                //KeyManager.Instance.Boards[(int)i].DamageEvent(3,time,duration);
             }
-            KeyManager.Instance.RefreshConnectKeys();
         }
         if (Input.GetMouseButtonDown(1))
         {
             for (var i = RowKey.A; i < RowKey.Semicolon; i++)
             {
-                KeyManager.Instance.Boards[(int)i].gameObject.SetActive(true);
+                //KeyManager.Instance.Boards[(int)i].gameObject.SetActive(true);
             }
-            KeyManager.Instance.RefreshConnectKeys();
         }
     }
 

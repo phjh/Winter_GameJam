@@ -7,7 +7,7 @@ public enum RowKey
     one=0, two, three, four, five, six, seven, eight, nine, zero,minus /* - */,equal,//=  (11)
     Q,W,E,R,T,Y,U,I,O,P,Leftbasket,//[ (22)
     A,S,D,F,G,H,J,K,L,Semicolon, //;  (32)
-    Z,X,C,V,B,N,M,Comma/*,*/, Period//.   (41)
+    Z,X,C,V,B,N,M,Comma/*,*/, Period//.   (42)
 }
 
 //public enum ColumnKey
@@ -18,23 +18,26 @@ public enum RowKey
 //    zero,P,Semicolon,   minus,leftbasket,   equal
 //}
 
-
 public class KeyManager : MonoSingleton<KeyManager>
 {
     //public bool isFound = false;
     //public KeyBase AimKey;
     //public SortedSet<KeyBase> set;
-    public List<KeyBase> Boards;
+    public List<KeyBase> MainBoard;
+    public List<KeyBase> firstline;
+    public List<KeyBase> secondline;
+    public List<KeyBase> thirdline;
+    public List<KeyBase> fourthline;
     public GameObject DamageEffecter;
-    public Tuple<Sprite,Sprite> KeySprites;
 
-    public void RefreshConnectKeys()
+    public void RefreshConnectKeys(KeyBase key)
     {
-        foreach (var key in Boards)
-        {
-            key.RefreshConnectedKey();
-        }
+        key.RefreshConnectedKey();
     }
 
+    public void DeleteConnectkeys(KeyBase key)
+    {
+        key.DeleteConnectedKey();
+    }
 
 }

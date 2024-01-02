@@ -24,7 +24,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (Input.anyKeyDown && !isMoving)
         {
-            foreach (var key in KeyManager.Instance.Boards)
+            foreach (var key in KeyManager.Instance.MainBoard)
             {
                 if (Input.GetKeyDown(key.InputKeyCode) && Input.GetKey(KeyCode.LeftControl) && key.gameObject.activeInHierarchy)
                 {
