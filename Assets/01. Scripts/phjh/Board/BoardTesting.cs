@@ -13,12 +13,13 @@ public class BoardTesting : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            for(var i = RowKey.A; i < RowKey.Semicolon; i++)  //여기서 범위잡아주고
+			for (var i = RowKey.one; i <= RowKey.equal; i++)  //여기서 범위잡아주고
+			{//요안에서 조건쓰면됨
+				KeyManager.Instance.Boards[(int)i].DamageEvent(3, time, duration);
+			}
+			for (var i = RowKey.A; i <= RowKey.Semicolon; i++)  //여기서 범위잡아주고
             {//요안에서 조건쓰면됨
-                if((int)i%2 == 0)
-                {
-                    KeyManager.Instance.Boards[(int)i].DamageEvent(3,time,duration);
-                }
+                KeyManager.Instance.Boards[(int)i].DamageEvent(3,time,duration);
             }
             KeyManager.Instance.RefreshConnectKeys();
         }
