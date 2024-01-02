@@ -26,7 +26,7 @@ public class PlayerMove : MonoBehaviour
         {
             foreach (var key in KeyManager.Instance.Boards)
             {
-                if (Input.GetKeyDown(key.InputKeyCode) && Input.GetKey(KeyCode.LeftControl))
+                if (Input.GetKeyDown(key.InputKeyCode) && Input.GetKey(KeyCode.LeftControl) && key.gameObject.activeInHierarchy)
                 {
                     StartCoroutine(TelePort(key));
                 }
