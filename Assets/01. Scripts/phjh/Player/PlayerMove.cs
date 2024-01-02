@@ -26,7 +26,11 @@ public class PlayerMove : MonoBehaviour
         {
             foreach (var key in KeyManager.Instance.Boards)
             {
-                if (Input.GetKeyDown(key.InputKeyCode) && nowPos.connectedKeys.Contains(key))
+                if (Input.GetKeyDown(key.InputKeyCode) && Input.GetKey(KeyCode.LeftControl))
+                {
+                    StartCoroutine(TelePort(key));
+                }
+                else if (Input.GetKeyDown(key.InputKeyCode) && nowPos.connectedKeys.Contains(key))
                 {
                     StartCoroutine(Moving(key));
                 }
@@ -39,6 +43,15 @@ public class PlayerMove : MonoBehaviour
         isMoving = true;
         transform.DOMove(key.transform.position, movesecond);
         yield return new WaitForSeconds(movesecond);
+        nowPos = key;
+        isMoving = false;
+    }
+
+    IEnumerator TelePort(KeyBase key)
+    {
+        isMoving = true;
+        transform.position = key.transform.position;
+        yield return new WaitForSeconds(0.5f);
         nowPos = key;
         isMoving = false;
     }
