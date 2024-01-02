@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -15,20 +16,22 @@ public class PlayerMove : MonoBehaviour
             {
                 if (Input.GetKeyDown(key.InputKeyCode))
                 {
-                    KeyCode keycode = key.InputKeyCode;
-                    isMoving = true;
-
-                    
-                    nowPos = key;
+                    GetRouteAndMoving(key);
                 }
             }
         }
     }
 
-    void DoBFSWithMoving()
+    void GetRouteAndMoving(KeyBase key)
     {
+        KeyCode keycode = key.InputKeyCode;
+        KeyManager.Instance.AimKey = key;
 
+        //foreach(var v in key.)
+        List<KeyBase> route = key.GetRoute(key);
+
+
+
+        nowPos = key;
     }
-
-
 }
