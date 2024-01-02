@@ -36,7 +36,7 @@ public class KeyBase : MonoBehaviour
     IEnumerator DamageCode(int damage,float time = 1,float duration=1)
     {
         SpriteRenderer sp = sprite.GetComponent<SpriteRenderer>();
-        float t=0;
+        float t = 0;
         while (t <= 1)
         {
             float color = Mathf.Lerp(1, 0, t);
@@ -46,8 +46,11 @@ public class KeyBase : MonoBehaviour
             yield return null;
         }
         yield return new WaitForSeconds(0.1f);
-        Destroy(Instantiate(KeyManager.Instance.DamageEffecter,transform.position,quaternion.identity),duration);
         sp.color = Color.white;
+        EnemyAttackArea attackArea = PoolManager.Instance.Pop("EnemyAttackArea") as EnemyAttackArea;
+        attackArea.transform.position = this.transform.position;
+        yield return new WaitForSeconds(duration);
+        PoolManager.Instance.Push(attackArea);
     }
 
     //±× ÀÌµ¿
