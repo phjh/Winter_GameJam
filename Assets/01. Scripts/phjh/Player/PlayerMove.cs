@@ -1,12 +1,24 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.InputSystem;
+using DG.Tweening;
+using System.Collections;
 
 public class PlayerMove : MonoBehaviour
 {
+    [SerializeField]
+    KeyBase StartKey;
+    [SerializeField]
+    float movetime = 0.5f;
+
     KeyBase nowPos;
     bool isMoving = false;
+
+    float movesecond => 1 - Mathf.Log(movetime)/2;
+
+    private void Start()
+    {
+        nowPos = StartKey;
+        transform.position = StartKey.transform.position;
+    }
 
     void Update()
     {
@@ -14,24 +26,35 @@ public class PlayerMove : MonoBehaviour
         {
             foreach (var key in KeyManager.Instance.Boards)
             {
-                if (Input.GetKeyDown(key.InputKeyCode))
+                if (Input.GetKeyDown(key.InputKeyCode) && nowPos.connectedKeys.Contains(key))
                 {
-                    GetRouteAndMoving(key);
+                    StartCoroutine(Moving(key));
                 }
             }
         }
     }
 
-    void GetRouteAndMoving(KeyBase key)
+    IEnumerator Moving(KeyBase key)
     {
-        KeyCode keycode = key.InputKeyCode;
-        KeyManager.Instance.AimKey = key;
-
-        //foreach(var v in key.)
-        List<KeyBase> route = key.GetRoute(key);
-
-
-
+        isMoving = true;
+        transform.DOMove(key.transform.position, movesecond);
+        yield return new WaitForSeconds(movesecond);
         nowPos = key;
+        isMoving = false;
     }
+
+    //±× ÀÌµ¿22
+    //void GetRouteAndMoving(KeyBase key)
+    //{
+    //    KeyCode keycode = key.InputKeyCode;
+
+    //    //KeyManager.Instance.AimKey = key;
+    //    //foreach(var v in key.)
+    //    //List<KeyBase> route = key.GetRoute(key);
+
+
+
+    //    nowPos = key;
+    //}
+
 }

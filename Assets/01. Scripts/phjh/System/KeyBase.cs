@@ -5,8 +5,7 @@ using UnityEngine.UI;
 public class KeyBase : MonoBehaviour
 {
     public KeyCode InputKeyCode;
-    [SerializeField]
-    List<KeyBase> connectedKeys;
+    public List<KeyBase> connectedKeys;
 
     private void Start()
     {
@@ -26,27 +25,28 @@ public class KeyBase : MonoBehaviour
         }
     }
 
-    public List<KeyBase> GetRoute(KeyBase nextKey)
-    {
-        List<KeyBase> nav = new List<KeyBase>();
-        foreach(var key in nextKey.connectedKeys)
-        {
-            if(key == KeyManager.Instance.AimKey)
-            {
-                nav.Add(key);
-                return nav;
-            }
-            if (!KeyManager.Instance.set.Contains(key))
-            {
-                KeyManager.Instance.set.Add(key);
-                nav = nextKey.GetRoute(key);
-                nav.Add(key);
-            }
+    //±× ÀÌµ¿
+    //public List<KeyBase> GetRoute(KeyBase nextKey)
+    //{
+    //    List<KeyBase> nav = new List<KeyBase>();
+    //    foreach(var key in nextKey.connectedKeys)
+    //    {
+    //        if(key == KeyManager.Instance.AimKey)
+    //        {
+    //            nav.Add(key);
+    //            return nav;
+    //        }
+    //        if (!KeyManager.Instance.set.Contains(key))
+    //        {
+    //            KeyManager.Instance.set.Add(key);
+    //            nav = nextKey.GetRoute(key);
+    //            nav.Add(key);
+    //        }
 
-        }
+    //    }
 
-        return nav;
-    }
+    //    return nav;
+    //}
 
     
 }
