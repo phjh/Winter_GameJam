@@ -18,12 +18,6 @@ public class KeyBase : MonoBehaviour
 
     private void Start()
     {
-        RefreshConnectedKey();
-        sprite = transform.GetChild(0).gameObject;
-    }
-
-    public void RefreshConnectedKey()
-    {
         connectedKeys = new List<KeyBase>();
 
         foreach (var key in KeyManager.Instance.MainBoard)
@@ -33,10 +27,19 @@ public class KeyBase : MonoBehaviour
                 connectedKeys.Add(key);
             }
         }
+
+        sprite = transform.GetChild(0).gameObject;
+    }
+
+    public void AddConnectedKey()
+    {
+        foreach (var keys in connectedKeys)
+        {
+            keys.connectedKeys.Remove(this);
+        }
     }
     public void DeleteConnectedKey()
     {
-        connectedKeys = new List<KeyBase>();
         foreach(var keys in connectedKeys)
         {
             keys.connectedKeys.Remove(this);
