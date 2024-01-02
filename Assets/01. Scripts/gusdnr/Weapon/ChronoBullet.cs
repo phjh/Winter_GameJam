@@ -5,7 +5,8 @@ using UnityEngine;
 public class ChronoBullet : PoolableMono
 {
 	public LayerMask WhatIsEnemy;
-	
+	GameObject target;
+	public float Speed = 3;
 
 	private void Awake()
 	{
@@ -15,7 +16,11 @@ public class ChronoBullet : PoolableMono
 
 	public override void Init()
 	{
-		
+		target = GameObject.Find("Target");
+		Rigidbody2D rb = GetComponent<Rigidbody2D>();
+
+		rb.velocity = (target.transform.position - transform.position).normalized * Speed;
+		transform.LookAt(target.transform.position);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)

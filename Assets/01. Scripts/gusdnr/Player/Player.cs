@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Player : MonoBehaviour
 {
@@ -16,6 +17,7 @@ public class Player : MonoBehaviour
 	[SerializeField] private Transform BFirePos;
 	public Transform target;
 	private bool isMoving = false;
+	private float time;
 
 
 	//플레이어 스크립트 내 밸류
@@ -40,6 +42,7 @@ public class Player : MonoBehaviour
 	{
 		FlipControl(ChronoParent);
 		FlipControl(BoardParent);
+		Attack();
 	}
 
 	private void FlipControl(GameObject FlipObject)
@@ -60,9 +63,24 @@ public class Player : MonoBehaviour
 
 	private void Attack()
 	{
+		int n = 1;
 		if(isMoving == false)
 		{
-			
+			time += Time.deltaTime;
+			if(time >= 5)
+			{
+				//대충 여기에 오염 그거 만들기
+			}
+			else if(time >= n)
+			{
+				n++;
+				//총알 날리기
+			}
+		}
+		else 
+		{
+			time = 0;
+
 		}
 	}
 
