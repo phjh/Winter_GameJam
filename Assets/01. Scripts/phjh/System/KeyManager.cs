@@ -26,7 +26,7 @@ public class KeyManager : MonoSingleton<KeyManager>
     //public SortedSet<KeyBase> set;
     public List<KeyBase> Boards;
     public GameObject DamageEffecter;
-    public Tuple<Sprite,Sprite> KeySprites;
+    //public Tuple<Sprite,Sprite> KeySprites;
 
     public void RefreshConnectKeys()
     {

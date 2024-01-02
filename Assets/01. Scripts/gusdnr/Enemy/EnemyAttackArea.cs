@@ -23,6 +23,7 @@ public class EnemyAttackArea : PoolableMono
 		{
 			if (collision.CompareTag("Player"))
 			{
+				StartCoroutine("Test");
 				isEndAttack = true;
 				Player player = collision.gameObject.GetComponent<Player>();
 				//player.CalculationHP(-1);
