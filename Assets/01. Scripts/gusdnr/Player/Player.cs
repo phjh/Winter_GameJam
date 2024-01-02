@@ -17,7 +17,10 @@ public class Player : MonoBehaviour
 	[SerializeField] private Transform BFirePos;
 	public Transform target;
 	private bool isMoving = false;
+	[SerializeField]
 	private float time;
+	[SerializeField]
+	private int attackTime=0;
 
 
 	//플레이어 스크립트 내 밸류
@@ -63,7 +66,6 @@ public class Player : MonoBehaviour
 
 	private void Attack()
 	{
-		int n = 1;
 		if(isMoving == false)
 		{
 			time += Time.deltaTime;
@@ -71,11 +73,13 @@ public class Player : MonoBehaviour
 			{
 				//대충 여기에 오염 그거 만들기
 			}
-			else if(time >= n)
+			else if(time > attackTime)
 			{
-				n++;
-				//총알 날리기
-			}
+				attackTime++;
+				ChronoBullet bullet = PoolManager.Instance.Pop("Bullet") as ChronoBullet;
+				bullet.transform.position = transform.position;
+				PoolManager.Instance.Push(bullet);
+            }
 		}
 		else 
 		{

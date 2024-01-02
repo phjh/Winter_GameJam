@@ -1,15 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.Collections.LowLevel.Unsafe;
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.UI;
 
 public class KeyBase : MonoBehaviour
 {
     public KeyCode InputKeyCode;
-    public List<KeyBase> connectedKeys;
+    public List<KeyBase> connectedKeys { get; private set; }
     GameObject sprite;
 
     public void DamageEvent(int damage, float time = 1, float duration = 1) => StartCoroutine(DamageCode(damage, time, duration));
@@ -22,7 +18,7 @@ public class KeyBase : MonoBehaviour
 
         foreach (var key in KeyManager.Instance.MainBoard)
         {
-            if (Vector3.Distance(this.transform.position, key.transform.position) < 2f && InputKeyCode != key.InputKeyCode && key.gameObject.activeInHierarchy)
+            if (Vector3.Distance(this.transform.position, key.transform.position) < 1.8f && InputKeyCode != key.InputKeyCode && key.gameObject.activeInHierarchy)
             {
                 connectedKeys.Add(key);
             }
