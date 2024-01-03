@@ -41,7 +41,14 @@ public class Player : MonoBehaviour
 
 	private void Start()
 	{
-		
+		if(target == null)
+		{
+			if(GameManager.Instance.Target == null)
+			{
+				Debug.LogError("타겟이 존재하지 않습니다.");
+			}
+			target = GameManager.Instance.Target;
+		}
 	}
 
 	private void Update()
