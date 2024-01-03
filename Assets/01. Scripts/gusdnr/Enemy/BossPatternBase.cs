@@ -4,7 +4,6 @@ using UnityEngine;
 
 public abstract class BossPatternBase : MonoBehaviour
 {
-	public abstract void ChangePattern();
-	public abstract void SetPattern();
+	public abstract void ChangePattern(int LinkedPattern = -1, bool isFixedLink = false);
 	public abstract void UpdatePattern();
 }

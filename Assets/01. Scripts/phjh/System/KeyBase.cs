@@ -8,7 +8,7 @@ public class KeyBase : MonoBehaviour
     public List<KeyBase> connectedKeys { get; private set; }
     GameObject sprite;
 
-    public void DamageEvent(int damage, float time = 1, float duration = 1) => StartCoroutine(DamageCode(damage, time, duration));
+    public void DamageEvent(float time = 1, float duration = 1) => StartCoroutine(DamageCode(time, duration));
 
     //void DamageEffect(float duration)=> Destroy(Instantiate(DamageEffecter), duration);
 
@@ -42,7 +42,7 @@ public class KeyBase : MonoBehaviour
         }
     }
 
-    IEnumerator DamageCode(int damage,float time = 1,float duration=1)
+    IEnumerator DamageCode(float time = 1,float duration=1)
     {
         SpriteRenderer sp = sprite.GetComponent<SpriteRenderer>();
         float t = 0;

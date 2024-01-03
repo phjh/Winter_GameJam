@@ -27,5 +27,7 @@ public class BossMain : MonoBehaviour
 
 	private void Update()
 	{
+
+
 	}
 }

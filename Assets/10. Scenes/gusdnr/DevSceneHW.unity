@@ -253,7 +253,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 45
-  connectedKeys: []
 --- !u!1 &59186726
 GameObject:
   m_ObjectHideFlags: 0
@@ -468,7 +467,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 57
-  connectedKeys: []
 --- !u!1 &105587049
 GameObject:
   m_ObjectHideFlags: 0
@@ -560,7 +558,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 119
-  connectedKeys: []
 --- !u!1 &137134726
 GameObject:
   m_ObjectHideFlags: 0
@@ -607,7 +604,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 121
-  connectedKeys: []
 --- !u!1 &149984257
 GameObject:
   m_ObjectHideFlags: 0
@@ -738,7 +734,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 50
-  connectedKeys: []
 --- !u!1 &188168174
 GameObject:
   m_ObjectHideFlags: 0
@@ -785,7 +780,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 48
-  connectedKeys: []
 --- !u!1 &238447639
 GameObject:
   m_ObjectHideFlags: 0
@@ -1084,7 +1078,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 110
-  connectedKeys: []
 --- !u!1001 &307786774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1096,6 +1089,10 @@ PrefabInstance:
     - target: {fileID: 1000012809227162, guid: bf6c8791ede43ec47a15a57fc4920cfa, type: 3}
       propertyPath: m_Name
       value: boss_golem
+      objectReference: {fileID: 0}
+    - target: {fileID: 1000012809227162, guid: bf6c8791ede43ec47a15a57fc4920cfa, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4000010145436236, guid: bf6c8791ede43ec47a15a57fc4920cfa, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -1131,7 +1128,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4000011277552712, guid: bf6c8791ede43ec47a15a57fc4920cfa, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -6.46
+      value: -4.56
       objectReference: {fileID: 0}
     - target: {fileID: 4000011277552712, guid: bf6c8791ede43ec47a15a57fc4920cfa, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1220,8 +1217,29 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 1000012809227162, guid: bf6c8791ede43ec47a15a57fc4920cfa, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 307786776}
   m_SourcePrefab: {fileID: 100100000, guid: bf6c8791ede43ec47a15a57fc4920cfa, type: 3}
+--- !u!1 &307786775 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 1000012809227162, guid: bf6c8791ede43ec47a15a57fc4920cfa, type: 3}
+  m_PrefabInstance: {fileID: 307786774}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &307786776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 307786775}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 918a7c15b9b84cf4ea64d4272452e6ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  MaxPatternValue: 4
 --- !u!1 &350010229
 GameObject:
   m_ObjectHideFlags: 0
@@ -1436,7 +1454,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 53
-  connectedKeys: []
 --- !u!1 &421926594
 GameObject:
   m_ObjectHideFlags: 0
@@ -1567,7 +1584,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 49
-  connectedKeys: []
 --- !u!1 &447303354
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,7 +1630,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 114
-  connectedKeys: []
 --- !u!1 &468912856
 GameObject:
   m_ObjectHideFlags: 0
@@ -1966,7 +1981,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 117
-  connectedKeys: []
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,7 +2109,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 115
-  connectedKeys: []
 --- !u!1 &684942207
 GameObject:
   m_ObjectHideFlags: 0
@@ -2478,7 +2491,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 111
-  connectedKeys: []
 --- !u!1 &768187217
 GameObject:
   m_ObjectHideFlags: 0
@@ -2609,7 +2621,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 120
-  connectedKeys: []
 --- !u!1 &791360258
 GameObject:
   m_ObjectHideFlags: 0
@@ -2656,7 +2667,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 106
-  connectedKeys: []
 --- !u!1 &844982569
 GameObject:
   m_ObjectHideFlags: 0
@@ -2871,7 +2881,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 112
-  connectedKeys: []
 --- !u!1 &914845890
 GameObject:
   m_ObjectHideFlags: 0
@@ -2918,7 +2927,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 91
-  connectedKeys: []
 --- !u!1 &917835436
 GameObject:
   m_ObjectHideFlags: 0
@@ -2965,7 +2973,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 51
-  connectedKeys: []
 --- !u!1 &940058400
 GameObject:
   m_ObjectHideFlags: 0
@@ -3096,7 +3103,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 102
-  connectedKeys: []
 --- !u!1 &993765334
 GameObject:
   m_ObjectHideFlags: 0
@@ -3143,7 +3149,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 46
-  connectedKeys: []
 --- !u!1 &1011756924
 GameObject:
   m_ObjectHideFlags: 0
@@ -3190,7 +3195,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 122
-  connectedKeys: []
 --- !u!1 &1020968064
 GameObject:
   m_ObjectHideFlags: 0
@@ -3237,7 +3241,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 105
-  connectedKeys: []
 --- !u!1 &1055322414
 GameObject:
   m_ObjectHideFlags: 0
@@ -3284,7 +3287,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 59
-  connectedKeys: []
 --- !u!1 &1065870708
 GameObject:
   m_ObjectHideFlags: 0
@@ -3583,7 +3585,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 54
-  connectedKeys: []
 --- !u!1 &1294807038
 GameObject:
   m_ObjectHideFlags: 0
@@ -3630,7 +3631,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 113
-  connectedKeys: []
 --- !u!1 &1322489480
 GameObject:
   m_ObjectHideFlags: 0
@@ -3677,7 +3677,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 44
-  connectedKeys: []
 --- !u!1 &1326101447
 GameObject:
   m_ObjectHideFlags: 0
@@ -3869,7 +3868,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1358770760}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a806caaaa66d85447ad181554c677fbf, type: 3}
   m_Name: 
@@ -4174,7 +4173,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 107
-  connectedKeys: []
 --- !u!1 &1498904349
 GameObject:
   m_ObjectHideFlags: 0
@@ -4473,7 +4471,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 103
-  connectedKeys: []
 --- !u!1 &1600304652
 GameObject:
   m_ObjectHideFlags: 0
@@ -4778,6 +4775,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Ef_25_blue_p
       objectReference: {fileID: 0}
+    - target: {fileID: 3358714636107381630, guid: 36a30e2c90c4c7c4daef423afd751d86, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4829,7 +4830,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 109
-  connectedKeys: []
 --- !u!1 &1672422447
 GameObject:
   m_ObjectHideFlags: 0
@@ -4960,7 +4960,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 61
-  connectedKeys: []
 --- !u!1 &1708700502
 GameObject:
   m_ObjectHideFlags: 0
@@ -5007,7 +5006,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 100
-  connectedKeys: []
 --- !u!1 &1719568285
 GameObject:
   m_ObjectHideFlags: 0
@@ -5054,7 +5052,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 98
-  connectedKeys: []
 --- !u!1 &1722714641
 GameObject:
   m_ObjectHideFlags: 0
@@ -5101,7 +5098,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 104
-  connectedKeys: []
 --- !u!1 &1723908195
 GameObject:
   m_ObjectHideFlags: 0
@@ -5148,7 +5144,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 99
-  connectedKeys: []
 --- !u!1 &1774191601
 GameObject:
   m_ObjectHideFlags: 0
@@ -5531,7 +5526,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 52
-  connectedKeys: []
 --- !u!1 &1874036389
 GameObject:
   m_ObjectHideFlags: 0
@@ -5558,7 +5552,7 @@ Transform:
   m_GameObject: {fileID: 1874036389}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.26, y: -0.47, z: 0.063097075}
+  m_LocalPosition: {x: 0.26, y: -0.94, z: 0.063097075}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -5719,6 +5713,10 @@ PrefabInstance:
     - target: {fileID: 1148112242060767251, guid: e0157bd4e423b53459d0f9251eed78af, type: 3}
       propertyPath: m_Name
       value: Ef_22_blue_p
+      objectReference: {fileID: 0}
+    - target: {fileID: 1148112242060767251, guid: e0157bd4e423b53459d0f9251eed78af, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4440578517544865671, guid: e0157bd4e423b53459d0f9251eed78af, type: 3}
       propertyPath: m_LocalPosition.x
@@ -6063,7 +6061,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 56
-  connectedKeys: []
 --- !u!1 &1955751745
 GameObject:
   m_ObjectHideFlags: 0
@@ -6110,7 +6107,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 118
-  connectedKeys: []
 --- !u!1 &1987959361
 GameObject:
   m_ObjectHideFlags: 0
@@ -6157,7 +6153,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 116
-  connectedKeys: []
 --- !u!1 &2018799124
 GameObject:
   m_ObjectHideFlags: 0
@@ -6204,7 +6199,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 55
-  connectedKeys: []
 --- !u!1 &2021676026
 GameObject:
   m_ObjectHideFlags: 0
@@ -6335,7 +6329,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 101
-  connectedKeys: []
 --- !u!1 &2081130662
 GameObject:
   m_ObjectHideFlags: 0
@@ -6382,7 +6375,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 97
-  connectedKeys: []
 --- !u!1 &2093036243
 GameObject:
   m_ObjectHideFlags: 0
@@ -6429,7 +6421,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 108
-  connectedKeys: []
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
