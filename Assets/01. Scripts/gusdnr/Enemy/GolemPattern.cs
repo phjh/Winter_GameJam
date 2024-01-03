@@ -40,6 +40,7 @@ public class GolemPattern : BossPatternBase
 			if (TempPatternNum == PatternNum)
 			{
 				ChangePattern();
+				return;
 			}
 		}
 		TempPatternNum = PatternNum;
@@ -56,11 +57,7 @@ public class GolemPattern : BossPatternBase
 				AttackCoroutine = BoomGround(0.7f, 0.3f, 2f);
 				break;
 			case 3:
-				AttackCoroutine = DiagonalBoom(0.8f, 0.3f, 0.8f);
-				break;
-			case 4:
-				break;
-			case 5:
+				AttackCoroutine = DiagonalBoom(0.6f, 0.2f, 1.5f);
 				break;
 			default:
 				break;
@@ -80,16 +77,16 @@ public class GolemPattern : BossPatternBase
 		for (var i = 0; i < 12; i++)
 		{
 			if (i > KeyManager.Instance.firstline.Count) break;
-			KeyManager.Instance.firstline[i].DamageEvent(time, duration);
-			if (i < KeyManager.Instance.secondline.Count) KeyManager.Instance.secondline[i].DamageEvent(time, duration);
+			KeyManager.Instance.firstline[i].DamageEvent(time, duration, true, "GroundBoom");
+			if (i < KeyManager.Instance.secondline.Count) KeyManager.Instance.secondline[i].DamageEvent(time, duration, true, "GroundBoom");
 			yield return new WaitForSeconds(time);
 		}
 		yield return new WaitForSeconds(0.5f);
 		for (var i = 0; i < 10; i++)
 		{
 			if (i > KeyManager.Instance.thirdline.Count) break;
-			if (i < KeyManager.Instance.thirdline.Count) KeyManager.Instance.thirdline[i].DamageEvent(time, duration);
-			if (i < KeyManager.Instance.fourthline.Count) KeyManager.Instance.fourthline[i].DamageEvent(time, duration);
+			if (i < KeyManager.Instance.thirdline.Count) KeyManager.Instance.thirdline[i].DamageEvent(time, duration, true, "GroundBoom");
+			if (i < KeyManager.Instance.fourthline.Count) KeyManager.Instance.fourthline[i].DamageEvent(time, duration, true, "GroundBoom");
 			yield return new WaitForSeconds(time);
 		}
 		yield return new WaitForSeconds(waitTime);
@@ -98,23 +95,21 @@ public class GolemPattern : BossPatternBase
 
 	private void NearAreaAttack(float time, float duration, KeyBase Center, bool centerAttack = false)
 	{
-		if (centerAttack) Center.DamageEvent(time, duration);
+		if (centerAttack) Center.DamageEvent(time, duration, true, "GroundBoom");
 
 		foreach (KeyBase area in Center.connectedKeys)
 		{
-			area.DamageEvent(time, duration);
+			area.DamageEvent(time, duration, true, "GroundBoom");
 		}
 	}
 
 	private IEnumerator SmashGround(float time, float duration, float waitTime = 0.5f)
 	{
 		int center = Random.Range(0, (int)RowKey.Period + 1);
-		bool isCenterAttack;
-		for (int i = 0; i < 6; i++)
+		for (int i = 0; i < 3; i++)
 		{
-			isCenterAttack = i % 2 == 0 ? true : false;
 			center = Random.Range(0, (int)RowKey.Period + 1);
-			NearAreaAttack(time, duration, KeyManager.Instance.MainBoard[center], isCenterAttack);
+			NearAreaAttack(time, duration, KeyManager.Instance.MainBoard[center]);
 			yield return new WaitForSeconds(0.1f);
 		}
 		yield return new WaitForSeconds(waitTime);
@@ -127,10 +122,10 @@ public class GolemPattern : BossPatternBase
 		{
 			if (i > KeyManager.Instance.firstline.Count) break;
 			if (i % 2 == 1) continue;
-			KeyManager.Instance.firstline[i].DamageEvent(time, duration);
-			if (i < KeyManager.Instance.secondline.Count) KeyManager.Instance.secondline[i].DamageEvent(time, duration);
-			if (i < KeyManager.Instance.thirdline.Count) KeyManager.Instance.thirdline[i].DamageEvent(time, duration);
-			if (i < KeyManager.Instance.fourthline.Count) KeyManager.Instance.fourthline[i].DamageEvent(time, duration);
+			KeyManager.Instance.firstline[i].DamageEvent(time, duration, true, "GroundBoom");
+			if (i < KeyManager.Instance.secondline.Count) KeyManager.Instance.secondline[i].DamageEvent(time, duration, true, "GroundBoom");
+			if (i < KeyManager.Instance.thirdline.Count) KeyManager.Instance.thirdline[i].DamageEvent(time, duration, true, "GroundBoom");
+			if (i < KeyManager.Instance.fourthline.Count) KeyManager.Instance.fourthline[i].DamageEvent(time, duration, true, "GroundBoom");
 			yield return new WaitForSeconds(time);
 		}
 		yield return new WaitForSeconds(waitTime);
@@ -170,12 +165,12 @@ public class GolemPattern : BossPatternBase
 		}
 		for (int i = 0; i < 3; i++)
 		{
-			KeyManager.Instance.firstline[5 - i].DamageEvent(1f, 1.6f);
-			KeyManager.Instance.secondline[4 - i].DamageEvent(1f, 1.6f);
-			KeyManager.Instance.thirdline[3 - i].DamageEvent(1f, 1.6f);
-			KeyManager.Instance.firstline[6 + i].DamageEvent(1f, 1.6f);
-			KeyManager.Instance.thirdline[6 + i].DamageEvent(1f, 1.6f);
-			KeyManager.Instance.secondline[6 + i].DamageEvent(1f, 1.6f);
+			KeyManager.Instance.firstline[5 - i].DamageEvent(1f, 1.6f, true, "GroundBoom");
+			KeyManager.Instance.secondline[4 - i].DamageEvent(1f, 1.6f, true, "GroundBoom");
+			KeyManager.Instance.thirdline[3 - i].DamageEvent(1f, 1.6f, true, "GroundBoom");
+			KeyManager.Instance.firstline[6 + i].DamageEvent(1f, 1.6f, true, "GroundBoom");
+			KeyManager.Instance.thirdline[6 + i].DamageEvent(1f, 1.6f, true, "GroundBoom");
+			KeyManager.Instance.secondline[6 + i].DamageEvent(1f, 1.6f, true, "GroundBoom");
 			yield return new WaitForSeconds(0.3f);
 		}
 		yield return new WaitForSeconds(4f);
