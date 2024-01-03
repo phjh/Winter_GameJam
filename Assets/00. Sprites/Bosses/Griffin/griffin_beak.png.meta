@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 59d3be510b4b887408ddf607b99cddff
+guid: 20aae6c9d04087046853e21576ee6130
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -49,11 +49,11 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 20
-  spriteBorder: {x: 145, y: 19, z: 145, w: 29}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: 0
+  spriteTessellationDetail: -1
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: griffin_upperbody_0
+      name: griffin_beak_0
       rect:
         serializedVersion: 2
-        x: 146
-        y: 25
-        width: 103
-        height: 161
+        x: 175
+        y: 82
+        width: 45
+        height: 45
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -124,8 +124,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e2fc1043cc700244489e6e40f1bfeb0a
-      internalID: -439234495
+      spriteID: 262cf3aed17fa014daa6761cf719bfa7
+      internalID: -1465040927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: griffin_beak_1
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 82
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54775a976e551784cb8eb1f3e4433aca
+      internalID: 1632134677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: griffin_beak_2
+      rect:
+        serializedVersion: 2
+        x: 967
+        y: 82
+        width: 45
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b79dc3e5cfacd046a489d7ba0b0a271
+      internalID: -1674698975
       vertices: []
       indices: 
       edges: []
@@ -134,14 +176,16 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      griffin_upperbody_0: -439234495
+      griffin_beak_0: -1465040927
+      griffin_beak_1: 1632134677
+      griffin_beak_2: -1674698975
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
