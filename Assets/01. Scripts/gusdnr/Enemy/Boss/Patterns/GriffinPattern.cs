@@ -157,6 +157,11 @@ public class GriffinPattern : BossPatternBase
 		ChangePattern();
 	}
 
+	private void BoneAttack()
+	{
+		//Ä¿³ØÆ® Å° 0,1, 4,5 Ä­ °ø°Ý
+	}
+
 	#endregion
 
 }
