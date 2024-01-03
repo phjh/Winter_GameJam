@@ -8,8 +8,10 @@ public class KeyBase : MonoBehaviour
     public RowKey BaseKey;
     public List<KeyBase> connectedKeys { get; private set; }
 	private SpriteRenderer sp;
+    public bool isImmunity = false;
+    Material NormalMat;
 
-	public void DamageEvent(float time = 1, float duration = 1, bool isPlayParticle = false, string particleName = "") => StartCoroutine(DamageCode(time, duration, isPlayParticle, particleName));
+    public void DamageEvent(float time = 1, float duration = 1, bool isPlayParticle = false, string particleName = "") => StartCoroutine(DamageCode(time, duration, isPlayParticle, particleName));
 
 	//void DamageEffect(float duration)=> Destroy(Instantiate(DamageEffecter), duration);
 
@@ -20,6 +22,8 @@ public class KeyBase : MonoBehaviour
 
 	private void Start()
     {
+        NormalMat = GetComponentInChildren<SpriteRenderer>().material;
+
         connectedKeys = new List<KeyBase>();
 
         foreach (var key in KeyManager.Instance.MainBoard)
@@ -28,6 +32,18 @@ public class KeyBase : MonoBehaviour
             {
                 connectedKeys.Add(key);
             }
+        }
+    }
+
+    private void Update()
+    {
+        if (isImmunity)
+        {
+            GetComponentInChildren<SpriteRenderer>().material = KeyManager.Instance.immunityMat;
+        }
+        else
+        {
+            GetComponentInChildren<SpriteRenderer>().material = NormalMat;
         }
     }
 
