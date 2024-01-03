@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class BoardTesting : MonoBehaviour
@@ -18,7 +19,7 @@ public class BoardTesting : MonoBehaviour
         {
             if(AttackCoroutine == null)
             {
-                int AttackNum = Random.Range(1,5);
+                int AttackNum = 5;
                 switch (AttackNum)
                 {
                     case 1:
@@ -33,7 +34,9 @@ public class BoardTesting : MonoBehaviour
                     case 4:
                         AttackCoroutine = StampAttack(0.3f);
                         break;
-
+                    case 5:
+                        AttackCoroutine = MineAttack(3);
+                        break;
                 }
 			   StartCoroutine(AttackCoroutine);
             }
@@ -88,7 +91,30 @@ public class BoardTesting : MonoBehaviour
 		AttackCoroutine = null;
 	}
 
-	IEnumerator StampAttack(float time, int combo = 0)
+    IEnumerator MineAttack(float time)
+    {
+        int n = Random.Range((int)RowKey.one, (int)RowKey.Period + 1);
+        KeyBase nowPos = KeyManager.Instance.MainBoard[n];
+        nowPos.DamageEvent(1, 0.8f, 0.2f);
+        foreach(var key in nowPos.connectedKeys)
+        {
+            key.DamageEvent(1, 0.8f, 0.2f);
+        }
+        for (int i = 0; i < 4; i++)
+        {
+            yield return new WaitForSeconds(time / 4);
+            n = Random.Range(0,KeyManager.Instance.MainBoard[n].connectedKeys.Count) % KeyManager.Instance.MainBoard[n].connectedKeys.Count;
+            nowPos = nowPos.connectedKeys[i];
+            nowPos.DamageEvent(1, 0.8f, 0.2f);
+            foreach (var key in nowPos.connectedKeys)
+            {
+                key.DamageEvent(1, 0.8f, 0.2f);
+            }
+        }
+        AttackCoroutine = null;
+    }
+
+    IEnumerator StampAttack(float time, int combo = 0)
 	{
         switch (combo)
         {

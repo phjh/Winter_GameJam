@@ -8,6 +8,7 @@ public enum RowKey
     Q,W,E,R,T,Y,U,I,O,P,Leftbasket,//[ (22)
     A,S,D,F,G,H,J,K,L,Semicolon, //;  (32)
     Z,X,C,V,B,N,M,Comma/*,*/, Period//.   (42)
+    ,LeftShift,RightShift,Space,
 }
 
 //public enum ColumnKey

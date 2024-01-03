@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,12 +16,14 @@ public class Player : MonoBehaviour
 	[SerializeField] private Transform CFirePos;
 	[SerializeField] private GameObject BoardParent;
 	[SerializeField] private Transform BFirePos;
+	[SerializeField] private GameObject bullet;
 	public Transform target;
 	private bool isMoving = false;
-	[SerializeField]
 	private float time;
+	private float attackTime = 0.2f;
 	[SerializeField]
-	private int attackTime=0;
+	private float attackCooltime=0.1f;
+	bool isleft = true;
 
 
 	//플레이어 스크립트 내 밸류
@@ -43,6 +46,7 @@ public class Player : MonoBehaviour
 
 	private void Update()
 	{
+		isMoving = GetComponentInParent<PlayerMove>().isMoving;
 		FlipControl(ChronoParent);
 		FlipControl(BoardParent);
 		Attack();
@@ -69,25 +73,40 @@ public class Player : MonoBehaviour
 		if(isMoving == false)
 		{
 			time += Time.deltaTime;
-			if(time >= 5)
+			if(attackTime > 5)
 			{
+				PlayerMove playerMove = transform.GetComponentInParent<PlayerMove>();
+				playerMove.nowPos.CorruptedKey();
+				attackTime = attackCooltime;
+				time = 0;
 				//대충 여기에 오염 그거 만들기
 			}
 			else if(time > attackTime)
 			{
-				attackTime++;
-				ChronoBullet bullet = PoolManager.Instance.Pop("Bullet") as ChronoBullet;
-				bullet.transform.position = transform.position;
-				PoolManager.Instance.Push(bullet);
+				attackTime += attackCooltime;
+
+				if (isleft)
+					CreateBullet(CFirePos.gameObject);
+				else
+					CreateBullet(BFirePos.gameObject);
+				
+				isleft = !isleft;
+				//ChronoBullet bullet = PoolManager.Instance.Pop("Bullet") as ChronoBullet;
+				//bullet.transform.position = transform.position;
+				//PoolManager.Instance.Push(bullet);
             }
 		}
 		else 
 		{
 			time = 0;
-
+			attackTime = attackCooltime;
 		}
 	}
 
+	void CreateBullet(GameObject obj)
+	{
+		Instantiate(bullet, obj.transform.position, Quaternion.identity);
+	}
 	private void SetStat()
 	{
 		PlayerCurHealth = _characterStat.maxHealth.GetValue();

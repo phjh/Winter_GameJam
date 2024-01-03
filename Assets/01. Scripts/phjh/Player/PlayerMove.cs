@@ -9,8 +9,10 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     float movetime = 0.5f;
 
-    KeyBase nowPos;
-    bool isMoving = false;
+    public KeyBase nowPos;
+    public bool isMoving = false;
+
+    int nowSkill = 0;
 
     float movesecond => 1 - Mathf.Log(movetime)/2;
 
@@ -33,6 +35,23 @@ public class PlayerMove : MonoBehaviour
                 else if (Input.GetKeyDown(key.InputKeyCode) && nowPos.connectedKeys.Contains(key))
                 {
                     StartCoroutine(Moving(key));
+                }
+                else if (Input.GetKeyDown(key.InputKeyCode) && 
+                    (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Space))) 
+                {
+                    switch(key.InputKeyCode)
+                    {
+                        case KeyCode.LeftShift:
+                            nowSkill += 2;
+                            break;
+                        case KeyCode.RightShift:
+                            nowSkill++;
+                            break;
+                        case KeyCode.Space:
+                            
+                            break;
+                    }
+                    nowSkill = nowSkill % 3;
                 }
             }
         }

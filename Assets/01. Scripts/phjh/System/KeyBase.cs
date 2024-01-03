@@ -31,7 +31,7 @@ public class KeyBase : MonoBehaviour
     {
         foreach (var keys in connectedKeys)
         {
-            keys.connectedKeys.Remove(this);
+            keys.connectedKeys.Add(this);
         }
     }
     public void DeleteConnectedKey()
@@ -59,6 +59,11 @@ public class KeyBase : MonoBehaviour
         attackArea.transform.position = this.transform.position;
         yield return new WaitForSeconds(duration);
         PoolManager.Instance.Push(attackArea);
+    }
+
+    public void CorruptedKey()
+    {
+
     }
 
     //±× ÀÌµ¿
