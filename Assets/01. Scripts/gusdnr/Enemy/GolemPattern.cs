@@ -6,20 +6,38 @@ using UnityEngine;
 public class GolemPattern : BossPatternBase
 {
 	[SerializeField] private int MaxPatternValue;
-
+	private BossMain bossMain;
 	private IEnumerator AttackCoroutine;
-
+	
 	private int PatternNum = 0;
 	private int TempPatternNum;
 	private int PatternCount = 0;
 
-	private void Update()
+	private void Awake()
 	{
+		bossMain = GetComponent<BossMain>();
+	}
+
+	public override void StartPattern()
+	{
+		bossMain.SetAnimation("idle");
+		if(AttackCoroutine != null)
+		{
+			Debug.LogError("패턴 코루틴이 초기화되지 않았습니다.");
+		}
 		if (AttackCoroutine == null)
 		{
 			AttackCoroutine = WaveGround(0.3f, 0.1f);
 			StartCoroutine(AttackCoroutine);
 		}
+	}
+
+	public override void OnDie()
+	{
+		AttackCoroutine = null;
+		StopAllCoroutines();
+		BossPatternBase bossPattern = this;
+		bossPattern.enabled = false;
 	}
 
 	public override void ChangePattern(int LinkedPattern = -1, bool isFixedLink = false)
@@ -28,6 +46,7 @@ public class GolemPattern : BossPatternBase
 		if (PatternCount == 5)
 		{
 			AttackCoroutine = CratorBurst();
+			bossMain.SetAnimation("skill_2");
 			StartCoroutine(AttackCoroutine);
 			PatternCount = 0;
 			return;
@@ -62,12 +81,13 @@ public class GolemPattern : BossPatternBase
 			default:
 				break;
 		}
+		bossMain.SetAnimation("skill_1");
 		StartCoroutine(AttackCoroutine);
 	}
 
 	public override void UpdatePattern()
 	{
-		throw new System.NotImplementedException();
+		//골렘은 사용 X
 	}
 
 	#region Patterns
@@ -95,7 +115,7 @@ public class GolemPattern : BossPatternBase
 
 	private void NearAreaAttack(float time, float duration, KeyBase Center, bool centerAttack = false)
 	{
-		if (centerAttack) Center.DamageEvent(time, duration, true, "GroundBoom");
+		if (centerAttack) Center.DamageEvent(time, duration, true, "GroundBigExplosion");
 
 		foreach (KeyBase area in Center.connectedKeys)
 		{
@@ -138,17 +158,17 @@ public class GolemPattern : BossPatternBase
 		{
 			if (i % 2 == 0)
 			{
-				if (i < KeyManager.Instance.firstline.Count) KeyManager.Instance.firstline[i].DamageEvent(time, duration);
-				if (i + 1 < KeyManager.Instance.firstline.Count) KeyManager.Instance.firstline[i + 1].DamageEvent(time, duration);
-				if (i < KeyManager.Instance.thirdline.Count) KeyManager.Instance.thirdline[i].DamageEvent(time, duration);
-				if (i + 1 < KeyManager.Instance.thirdline.Count) KeyManager.Instance.thirdline[i + 1].DamageEvent(time, duration);
+				if (i < KeyManager.Instance.firstline.Count) KeyManager.Instance.firstline[i].DamageEvent(time, duration, true, "GroundBigExplosion");
+				if (i + 1 < KeyManager.Instance.firstline.Count) KeyManager.Instance.firstline[i + 1].DamageEvent(time, duration, true, "GroundBigExplosion");
+				if (i < KeyManager.Instance.thirdline.Count) KeyManager.Instance.thirdline[i].DamageEvent(time, duration, true, "GroundBigExplosion");
+				if (i + 1 < KeyManager.Instance.thirdline.Count) KeyManager.Instance.thirdline[i + 1].DamageEvent(time, duration, true, "GroundBigExplosion");
 			}
 			else if (i % 2 == 1)
 			{
-				if (i < KeyManager.Instance.secondline.Count) KeyManager.Instance.secondline[i].DamageEvent(time, duration);
-				if (i + 1 < KeyManager.Instance.secondline.Count) KeyManager.Instance.secondline[i + 1].DamageEvent(time, duration);
-				if (i < KeyManager.Instance.fourthline.Count) KeyManager.Instance.fourthline[i].DamageEvent(time, duration);
-				if (i + 1 < KeyManager.Instance.fourthline.Count) KeyManager.Instance.fourthline[i + 1].DamageEvent(time, duration);
+				if (i < KeyManager.Instance.secondline.Count) KeyManager.Instance.secondline[i].DamageEvent(time, duration, true, "GroundBigExplosion");
+				if (i + 1 < KeyManager.Instance.secondline.Count) KeyManager.Instance.secondline[i + 1].DamageEvent(time, duration, true, "GroundBigExplosion");
+				if (i < KeyManager.Instance.fourthline.Count) KeyManager.Instance.fourthline[i].DamageEvent(time, duration, true, "GroundBigExplosion");
+				if (i + 1 < KeyManager.Instance.fourthline.Count) KeyManager.Instance.fourthline[i + 1].DamageEvent(time, duration, true, "GroundBigExplosion");
 			}
 			yield return new WaitForSeconds(time);
 		}
@@ -161,7 +181,7 @@ public class GolemPattern : BossPatternBase
 		NearAreaAttack(0.3f, 2f, KeyManager.Instance.MainBoard[(int)RowKey.Y], true);
 		for (int i = 0; i < KeyManager.Instance.fourthline.Count; i++)
 		{
-			KeyManager.Instance.fourthline[i].DamageEvent(0.7f, 2.5f);
+			KeyManager.Instance.fourthline[i].DamageEvent(0.7f, 2.5f, true, "GroundBigExplosion");
 		}
 		for (int i = 0; i < 3; i++)
 		{
