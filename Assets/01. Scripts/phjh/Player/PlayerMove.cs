@@ -2,6 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Collections;
 using Cinemachine;
+using System.Collections.Generic;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -16,9 +17,16 @@ public class PlayerMove : MonoBehaviour
     int nowSkill = 0;
 
     [SerializeField]
+    CinemachineVirtualCameraBase cam;
+    [SerializeField]
     CinemachineBasicMultiChannelPerlin brain;
     [SerializeField]
     float amplitude = 1.7f;
+
+    [SerializeField]
+    GameObject collectiveobj;
+    HashSet<int> collectObj;
+    List<GameObject> collectObjInfo;
 
     float movesecond => 1 - Mathf.Log(movetime)/2;
 
@@ -26,6 +34,7 @@ public class PlayerMove : MonoBehaviour
     {
         nowPos = StartKey;
         transform.position = StartKey.transform.position;
+        brain = cam.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
     }
 
     void Update()
@@ -43,21 +52,9 @@ public class PlayerMove : MonoBehaviour
                     StartCoroutine(Moving(key));
                 }
                 else if (Input.GetKeyDown(key.InputKeyCode) && 
-                    (Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) || Input.GetKeyDown(KeyCode.Space))) 
+                    (/*Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) ||*/ Input.GetKeyDown(KeyCode.Space))) 
                 {
-                    switch(key.InputKeyCode)
-                    {
-                        case KeyCode.LeftShift:
-                            nowSkill += 2;
-                            break;
-                        case KeyCode.RightShift:
-                            nowSkill++;
-                            break;
-                        case KeyCode.Space:
-                            
-                            break;
-                    }
-                    nowSkill = nowSkill % 3;
+                    StartCoroutine(GwenIsImmunity());
                 }
             }
         }
@@ -84,6 +81,46 @@ public class PlayerMove : MonoBehaviour
     }
 
 
+    #region 플레이어 스킬
+
+    IEnumerator GwenIsImmunity()   //그면상 (그냥 무적상태)
+    {
+        KeyBase ImmunityKey = new KeyBase();
+        ImmunityKey = nowPos;
+        ImmunityKey.isImmunity = true;
+        foreach(var key in ImmunityKey.connectedKeys)
+        {
+            key.isImmunity = true;
+        }
+        yield return new WaitForSeconds(2f);
+        ImmunityKey.isImmunity = false;
+        foreach (var key in ImmunityKey.connectedKeys)
+        {
+            key.isImmunity = false;
+        }
+    }
+
+    //IEnumerator CollectAtk()
+    //{
+    //    InstanceCollectobj(5);
+    //    yield return collectObj.Count != 0;
+    //    Debug.Log("skill Actived");
+    //    collectObjInfo.
+    //}
+
+    //void InstanceCollectobj(int n)
+    //{
+    //    for(;collectObj.Count < n;)
+    //    {
+    //        int rand = Random.Range((int)RowKey.one, (int)RowKey.Period + 1);
+    //        if (!collectObj.Contains(rand))
+    //        {
+    //            GameObject obj = Instantiate(collectiveobj);
+    //            collectObj.Add(rand);
+    //            collectObjInfo.Add(obj);
+    //        }
+    //    }
+    //}
 
 
 
@@ -91,15 +128,7 @@ public class PlayerMove : MonoBehaviour
 
 
 
-
-
-
-
-
-
-
-
-
+    #endregion
 
 
     //그 이동22

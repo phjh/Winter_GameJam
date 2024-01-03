@@ -31,6 +31,8 @@ public class KeyManager : MonoSingleton<KeyManager>
     public List<KeyBase> fourthline;
     public GameObject DamageEffecter;
 
+    public Material immunityMat;
+
     public void AddConnectKeys(KeyBase key) //킬때는 이거
     {
         key.AddConnectedKey();

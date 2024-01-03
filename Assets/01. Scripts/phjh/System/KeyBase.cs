@@ -7,6 +7,8 @@ public class KeyBase : MonoBehaviour
     public KeyCode InputKeyCode;
     public List<KeyBase> connectedKeys { get; private set; }
     GameObject sprite;
+    public bool isImmunity = false;
+    Material NormalMat;
 
     public void DamageEvent(float time = 1, float duration = 1, bool isPlayParticle = false, string particleName = "") => StartCoroutine(DamageCode(time, duration, isPlayParticle, particleName));
 
@@ -14,6 +16,8 @@ public class KeyBase : MonoBehaviour
 
     private void Start()
     {
+        NormalMat = GetComponentInChildren<SpriteRenderer>().material;
+
         connectedKeys = new List<KeyBase>();
 
         foreach (var key in KeyManager.Instance.MainBoard)
@@ -27,6 +31,18 @@ public class KeyBase : MonoBehaviour
         sprite = transform.GetChild(0).gameObject;
     }
 
+    private void Update()
+    {
+        if (isImmunity)
+        {
+            GetComponentInChildren<SpriteRenderer>().material = KeyManager.Instance.immunityMat;
+        }
+        else
+        {
+            GetComponentInChildren<SpriteRenderer>().material = NormalMat;
+        }
+    }
+
     public void AddConnectedKey()
     {
         foreach (var keys in connectedKeys)
@@ -34,6 +50,7 @@ public class KeyBase : MonoBehaviour
             keys.connectedKeys.Add(this);
         }
     }
+
     public void DeleteConnectedKey()
     {
         foreach(var keys in connectedKeys)

@@ -153,6 +153,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 49
+  isImmunity: 0
 --- !u!4 &20485820
 Transform:
   m_ObjectHideFlags: 0
@@ -202,8 +203,10 @@ MonoBehaviour:
   movetime: 4
   nowPos: {fileID: 0}
   isMoving: 0
+  cam: {fileID: 1229747818}
   brain: {fileID: 0}
   amplitude: 1.7
+  collectiveobj: {fileID: 0}
 --- !u!4 &22335538
 Transform:
   m_ObjectHideFlags: 0
@@ -334,6 +337,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 55
+  isImmunity: 0
 --- !u!4 &64072948
 Transform:
   m_ObjectHideFlags: 0
@@ -380,6 +384,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 51
+  isImmunity: 0
 --- !u!4 &67704678
 Transform:
   m_ObjectHideFlags: 0
@@ -426,6 +431,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 50
+  isImmunity: 0
 --- !u!4 &81444318
 Transform:
   m_ObjectHideFlags: 0
@@ -472,6 +478,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 120
+  isImmunity: 0
 --- !u!4 &103985619
 Transform:
   m_ObjectHideFlags: 0
@@ -627,6 +634,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 32
+  isImmunity: 0
 --- !u!1 &125709027
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,6 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 107
+  isImmunity: 0
 --- !u!4 &137721702
 Transform:
   m_ObjectHideFlags: 0
@@ -871,6 +880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 104
+  isImmunity: 0
 --- !u!4 &176128972
 Transform:
   m_ObjectHideFlags: 0
@@ -917,6 +927,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 61
+  isImmunity: 0
 --- !u!4 &195018776
 Transform:
   m_ObjectHideFlags: 0
@@ -1064,6 +1075,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 303
+  isImmunity: 0
 --- !u!1 &260722809
 GameObject:
   m_ObjectHideFlags: 0
@@ -1094,6 +1106,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 106
+  isImmunity: 0
 --- !u!4 &260722811
 Transform:
   m_ObjectHideFlags: 0
@@ -1224,6 +1237,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 119
+  isImmunity: 0
 --- !u!4 &299124058
 Transform:
   m_ObjectHideFlags: 0
@@ -1572,6 +1586,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 304
+  isImmunity: 0
 --- !u!1 &362595430
 GameObject:
   m_ObjectHideFlags: 0
@@ -1770,6 +1785,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 102
+  isImmunity: 0
 --- !u!4 &388654468
 Transform:
   m_ObjectHideFlags: 0
@@ -1900,6 +1916,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 116
+  isImmunity: 0
 --- !u!4 &440178746
 Transform:
   m_ObjectHideFlags: 0
@@ -1946,6 +1963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 109
+  isImmunity: 0
 --- !u!4 &445496958
 Transform:
   m_ObjectHideFlags: 0
@@ -2076,6 +2094,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 122
+  isImmunity: 0
 --- !u!4 &487819333
 Transform:
   m_ObjectHideFlags: 0
@@ -2122,6 +2141,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 46
+  isImmunity: 0
 --- !u!4 &487837900
 Transform:
   m_ObjectHideFlags: 0
@@ -2620,6 +2640,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 54
+  isImmunity: 0
 --- !u!4 &611038127
 Transform:
   m_ObjectHideFlags: 0
@@ -2750,6 +2771,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 115
+  isImmunity: 0
 --- !u!4 &631406381
 Transform:
   m_ObjectHideFlags: 0
@@ -2796,6 +2818,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 91
+  isImmunity: 0
 --- !u!4 &674849032
 Transform:
   m_ObjectHideFlags: 0
@@ -3291,6 +3314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 111
+  isImmunity: 0
 --- !u!4 &865215881
 Transform:
   m_ObjectHideFlags: 0
@@ -3337,6 +3361,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 114
+  isImmunity: 0
 --- !u!4 &873061994
 Transform:
   m_ObjectHideFlags: 0
@@ -3551,6 +3576,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 44
+  isImmunity: 0
 --- !u!4 &934687989
 Transform:
   m_ObjectHideFlags: 0
@@ -3681,6 +3707,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 105
+  isImmunity: 0
 --- !u!4 &965073591
 Transform:
   m_ObjectHideFlags: 0
@@ -3926,6 +3953,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 48
+  isImmunity: 0
 --- !u!4 &1021585369
 Transform:
   m_ObjectHideFlags: 0
@@ -4236,6 +4264,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 117
+  isImmunity: 0
 --- !u!4 &1232454199
 Transform:
   m_ObjectHideFlags: 0
@@ -4366,6 +4395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 96
+  isImmunity: 0
 --- !u!4 &1238998787
 Transform:
   m_ObjectHideFlags: 0
@@ -4580,6 +4610,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 101
+  isImmunity: 0
 --- !u!4 &1266287617
 Transform:
   m_ObjectHideFlags: 0
@@ -4962,6 +4993,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 52
+  isImmunity: 0
 --- !u!4 &1316166912
 Transform:
   m_ObjectHideFlags: 0
@@ -5008,6 +5040,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 57
+  isImmunity: 0
 --- !u!4 &1329225561
 Transform:
   m_ObjectHideFlags: 0
@@ -5222,6 +5255,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 53
+  isImmunity: 0
 --- !u!4 &1356951080
 Transform:
   m_ObjectHideFlags: 0
@@ -5619,6 +5653,7 @@ MonoBehaviour:
   - {fileID: 1238998786}
   - {fileID: 1238998786}
   DamageEffecter: {fileID: 8824240668074943121, guid: fdab3830c98aeea4e8490a3a915d522a, type: 3}
+  immunityMat: {fileID: 2100000, guid: a81fac5758df5f641b787d1a008cd279, type: 2}
 --- !u!4 &1418678683
 Transform:
   m_ObjectHideFlags: 0
@@ -5724,6 +5759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 110
+  isImmunity: 0
 --- !u!4 &1427877838
 Transform:
   m_ObjectHideFlags: 0
@@ -5854,6 +5890,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 103
+  isImmunity: 0
 --- !u!4 &1512745967
 Transform:
   m_ObjectHideFlags: 0
@@ -5984,6 +6021,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 121
+  isImmunity: 0
 --- !u!4 &1561387358
 Transform:
   m_ObjectHideFlags: 0
@@ -6030,6 +6068,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 118
+  isImmunity: 0
 --- !u!4 &1561895808
 Transform:
   m_ObjectHideFlags: 0
@@ -6244,6 +6283,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 59
+  isImmunity: 0
 --- !u!4 &1607832839
 Transform:
   m_ObjectHideFlags: 0
@@ -6542,6 +6582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 99
+  isImmunity: 0
 --- !u!4 &1673498264
 Transform:
   m_ObjectHideFlags: 0
@@ -6588,6 +6629,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 45
+  isImmunity: 0
 --- !u!4 &1687674217
 Transform:
   m_ObjectHideFlags: 0
@@ -6634,6 +6676,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 98
+  isImmunity: 0
 --- !u!4 &1720569066
 Transform:
   m_ObjectHideFlags: 0
@@ -6764,6 +6807,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 108
+  isImmunity: 0
 --- !u!4 &1729535140
 Transform:
   m_ObjectHideFlags: 0
@@ -7360,6 +7404,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 56
+  isImmunity: 0
 --- !u!4 &1832967867
 Transform:
   m_ObjectHideFlags: 0
@@ -7490,6 +7535,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 112
+  isImmunity: 0
 --- !u!4 &1851584207
 Transform:
   m_ObjectHideFlags: 0
@@ -7536,6 +7582,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 100
+  isImmunity: 0
 --- !u!4 &1854916280
 Transform:
   m_ObjectHideFlags: 0
@@ -7918,6 +7965,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 113
+  isImmunity: 0
 --- !u!4 &1915395294
 Transform:
   m_ObjectHideFlags: 0
@@ -8280,6 +8328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   InputKeyCode: 97
+  isImmunity: 0
 --- !u!4 &2144532188
 Transform:
   m_ObjectHideFlags: 0
