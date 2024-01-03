@@ -27,8 +27,7 @@ public class GolemPattern : BossPatternBase
 		}
 		if (AttackCoroutine == null)
 		{
-			AttackCoroutine = WaveGround(0.3f, 0.1f);
-			StartCoroutine(AttackCoroutine);
+			ChangePattern();
 		}
 	}
 
@@ -63,6 +62,7 @@ public class GolemPattern : BossPatternBase
 			}
 		}
 		TempPatternNum = PatternNum;
+		LightColorChanger.Instance.ChangeColor(PatternNum);
 		PatternCount++;
 		switch (PatternNum)
 		{

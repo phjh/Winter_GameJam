@@ -5,7 +5,7 @@ using UnityEngine;
 public class BossMain : MonoBehaviour
 {
 	[Header("Components")]
-	private Animator BossAnimator;
+	[SerializeField] private Animator BossAnimator;
 	private BossPatternBase BossPatternRunner;
 	private Transform target;
 
@@ -35,6 +35,7 @@ public class BossMain : MonoBehaviour
 	{
 		GameManager.Instance.Target = target;
 		curHP = MaxHP;
+		BossPatternRunner.StartPattern();
 	}
 
 	public void GetDamage(float Damage)

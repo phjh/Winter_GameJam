@@ -5,19 +5,21 @@ using UnityEngine;
 public class KeyBase : MonoBehaviour
 {
     public KeyCode InputKeyCode;
+    public RowKey BaseKey;
     public List<KeyBase> connectedKeys { get; private set; }
-    GameObject sprite;
-    public bool isImmunity = false;
-    Material NormalMat;
+	private SpriteRenderer sp;
 
-    public void DamageEvent(float time = 1, float duration = 1, bool isPlayParticle = false, string particleName = "") => StartCoroutine(DamageCode(time, duration, isPlayParticle, particleName));
+	public void DamageEvent(float time = 1, float duration = 1, bool isPlayParticle = false, string particleName = "") => StartCoroutine(DamageCode(time, duration, isPlayParticle, particleName));
 
-    //void DamageEffect(float duration)=> Destroy(Instantiate(DamageEffecter), duration);
+	//void DamageEffect(float duration)=> Destroy(Instantiate(DamageEffecter), duration);
 
-    private void Start()
+	private void Awake()
+	{
+		sp = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+	}
+
+	private void Start()
     {
-        NormalMat = GetComponentInChildren<SpriteRenderer>().material;
-
         connectedKeys = new List<KeyBase>();
 
         foreach (var key in KeyManager.Instance.MainBoard)
@@ -26,20 +28,6 @@ public class KeyBase : MonoBehaviour
             {
                 connectedKeys.Add(key);
             }
-        }
-
-        sprite = transform.GetChild(0).gameObject;
-    }
-
-    private void Update()
-    {
-        if (isImmunity)
-        {
-            GetComponentInChildren<SpriteRenderer>().material = KeyManager.Instance.immunityMat;
-        }
-        else
-        {
-            GetComponentInChildren<SpriteRenderer>().material = NormalMat;
         }
     }
 
@@ -50,7 +38,6 @@ public class KeyBase : MonoBehaviour
             keys.connectedKeys.Add(this);
         }
     }
-
     public void DeleteConnectedKey()
     {
         foreach(var keys in connectedKeys)
@@ -61,12 +48,10 @@ public class KeyBase : MonoBehaviour
 
     IEnumerator DamageCode(float time = 1,float duration=1, bool isPlayParticle = false, string particleName = "")
     {
-        SpriteRenderer sp = sprite.GetComponent<SpriteRenderer>();
         float t = 0;
-        while (t <= 1)
+		while (t < 1)
         {
-            float color = Mathf.Lerp(1, 0, t);
-            sp.color = new Color(1, color, color);
+            sp.color = new Color(1, Mathf.Lerp(1, 0, t), Mathf.Lerp(1, 0, t));
             t += Time.deltaTime/time;
             yield return null;
         }

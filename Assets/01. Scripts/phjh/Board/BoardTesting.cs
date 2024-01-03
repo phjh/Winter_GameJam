@@ -95,20 +95,20 @@ public class BoardTesting : MonoBehaviour
     {
         int n = Random.Range((int)RowKey.one, (int)RowKey.Period + 1);
         KeyBase nowPos = KeyManager.Instance.MainBoard[n];
-        nowPos.DamageEvent(1, 0.8f, false);
+        nowPos.DamageEvent(1, 0.8f);
         foreach(var key in nowPos.connectedKeys)
         {
-            key.DamageEvent(1, 0.8f, false);
+            key.DamageEvent(1, 0.8f);
         }
         for (int i = 0; i < 4; i++)
         {
             yield return new WaitForSeconds(time / 4);
             n = Random.Range(0,KeyManager.Instance.MainBoard[n].connectedKeys.Count) % KeyManager.Instance.MainBoard[n].connectedKeys.Count;
             nowPos = nowPos.connectedKeys[i];
-            nowPos.DamageEvent(1, 0.8f, false);
+            nowPos.DamageEvent(1, 0.8f);
             foreach (var key in nowPos.connectedKeys)
             {
-                key.DamageEvent(1, 0.8f, false);
+                key.DamageEvent(1, 0.8f);
             }
         }
         AttackCoroutine = null;
