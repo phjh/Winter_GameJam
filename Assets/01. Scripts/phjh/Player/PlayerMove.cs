@@ -1,6 +1,7 @@
 using UnityEngine;
 using DG.Tweening;
 using System.Collections;
+using Cinemachine;
 
 public class PlayerMove : MonoBehaviour
 {
@@ -13,6 +14,11 @@ public class PlayerMove : MonoBehaviour
     public bool isMoving = false;
 
     int nowSkill = 0;
+
+    [SerializeField]
+    CinemachineBasicMultiChannelPerlin brain;
+    [SerializeField]
+    float amplitude = 1.7f;
 
     float movesecond => 1 - Mathf.Log(movetime)/2;
 
@@ -60,10 +66,12 @@ public class PlayerMove : MonoBehaviour
     IEnumerator Moving(KeyBase key)
     {
         isMoving = true;
+        brain.m_AmplitudeGain = 0;
         transform.DOMove(key.transform.position, movesecond);
         yield return new WaitForSeconds(movesecond);
         nowPos = key;
         isMoving = false;
+        brain.m_AmplitudeGain = amplitude;
     }
 
     IEnumerator TelePort(KeyBase key)
@@ -74,6 +82,25 @@ public class PlayerMove : MonoBehaviour
         nowPos = key;
         isMoving = false;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //±× ÀÌµ¿22
     //void GetRouteAndMoving(KeyBase key)
