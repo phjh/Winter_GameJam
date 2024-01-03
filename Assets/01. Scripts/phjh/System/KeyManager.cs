@@ -1,13 +1,14 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public enum RowKey
 {
     one=0, two, three, four, five, six, seven, eight, nine, zero,minus /* - */,equal,//=  (11)
     Q,W,E,R,T,Y,U,I,O,P,Leftbasket,//[ (22)
     A,S,D,F,G,H,J,K,L,Semicolon, //;  (32)
-    Z,X,C,V,B,N,M,Comma/*,*/, Period//.   (42)
+    Z,X,C,V,B,N,M,Comma/*,*/, Period, End//.   (42)
     ,LeftShift,RightShift,Space,
 }
 
@@ -31,7 +32,15 @@ public class KeyManager : MonoSingleton<KeyManager>
     public List<KeyBase> fourthline;
     public GameObject DamageEffecter;
 
-    public void AddConnectKeys(KeyBase key) //킬때는 이거
+	private void Start()
+	{
+		for (int i = 0; i < MainBoard.Count; i++)
+        {
+            MainBoard[i].BaseKey = (RowKey)i;
+		}
+	}
+
+	public void AddConnectKeys(KeyBase key) //킬때는 이거
     {
         key.AddConnectedKey();
     }

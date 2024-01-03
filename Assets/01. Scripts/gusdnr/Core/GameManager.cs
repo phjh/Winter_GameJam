@@ -8,7 +8,8 @@ public class GameManager : MonoSingleton<GameManager>
     private bool isHardCore;
     public bool IsHardCore => isHardCore;
 
-	public Transform Target {  get; set; }
+	public Transform Target { get; set; }
+	public KeyBase PlayerPos { get; set; }
 
 	[SerializeField]
 	private PoolingListSO _poolingList;

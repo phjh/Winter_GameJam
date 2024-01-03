@@ -5,14 +5,20 @@ using UnityEngine;
 public class KeyBase : MonoBehaviour
 {
     public KeyCode InputKeyCode;
+    public RowKey BaseKey;
     public List<KeyBase> connectedKeys { get; private set; }
-    GameObject sprite;
+	private SpriteRenderer sp;
 
-    public void DamageEvent(float time = 1, float duration = 1, bool isPlayParticle = false, string particleName = "") => StartCoroutine(DamageCode(time, duration, isPlayParticle, particleName));
+	public void DamageEvent(float time = 1, float duration = 1, bool isPlayParticle = false, string particleName = "") => StartCoroutine(DamageCode(time, duration, isPlayParticle, particleName));
 
-    //void DamageEffect(float duration)=> Destroy(Instantiate(DamageEffecter), duration);
+	//void DamageEffect(float duration)=> Destroy(Instantiate(DamageEffecter), duration);
 
-    private void Start()
+	private void Awake()
+	{
+		sp = transform.GetChild(0).gameObject.GetComponent<SpriteRenderer>();
+	}
+
+	private void Start()
     {
         connectedKeys = new List<KeyBase>();
 
@@ -23,8 +29,6 @@ public class KeyBase : MonoBehaviour
                 connectedKeys.Add(key);
             }
         }
-
-        sprite = transform.GetChild(0).gameObject;
     }
 
     public void AddConnectedKey()
@@ -44,12 +48,10 @@ public class KeyBase : MonoBehaviour
 
     IEnumerator DamageCode(float time = 1,float duration=1, bool isPlayParticle = false, string particleName = "")
     {
-        SpriteRenderer sp = sprite.GetComponent<SpriteRenderer>();
         float t = 0;
-        while (t <= 1)
+		while (t < 1)
         {
-            float color = Mathf.Lerp(1, 0, t);
-            sp.color = new Color(1, color, color);
+            sp.color = new Color(1, Mathf.Lerp(1, 0, t), Mathf.Lerp(1, 0, t));
             t += Time.deltaTime/time;
             yield return null;
         }

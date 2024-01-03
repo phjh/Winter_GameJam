@@ -16,15 +16,21 @@ public class PlayerMove : MonoBehaviour
 
     float movesecond => 1 - Mathf.Log(movetime)/2;
 
-    private void Start()
+	private void Awake()
+	{
+		nowPos = StartKey;
+		GameManager.Instance.PlayerPos = nowPos;
+	}
+
+	private void Start()
     {
-        nowPos = StartKey;
-        transform.position = StartKey.transform.position;
+		transform.position = StartKey.transform.position;
     }
 
     void Update()
     {
-        if (Input.anyKeyDown && !isMoving)
+		GameManager.Instance.PlayerPos = nowPos;
+		if (Input.anyKeyDown && !isMoving)
         {
             foreach (var key in KeyManager.Instance.MainBoard)
             {
