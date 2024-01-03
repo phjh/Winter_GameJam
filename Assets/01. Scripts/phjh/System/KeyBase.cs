@@ -8,7 +8,7 @@ public class KeyBase : MonoBehaviour
     public List<KeyBase> connectedKeys { get; private set; }
     GameObject sprite;
 
-    public void DamageEvent(int damage, float time = 1, float duration = 1) => StartCoroutine(DamageCode(damage, time, duration));
+    public void DamageEvent(float time = 1, float duration = 1, bool isPlayParticle = false, string particleName = "") => StartCoroutine(DamageCode(time, duration, isPlayParticle, particleName));
 
     //void DamageEffect(float duration)=> Destroy(Instantiate(DamageEffecter), duration);
 
@@ -42,7 +42,7 @@ public class KeyBase : MonoBehaviour
         }
     }
 
-    IEnumerator DamageCode(int damage,float time = 1,float duration=1)
+    IEnumerator DamageCode(float time = 1,float duration=1, bool isPlayParticle = false, string particleName = "")
     {
         SpriteRenderer sp = sprite.GetComponent<SpriteRenderer>();
         float t = 0;
@@ -57,6 +57,11 @@ public class KeyBase : MonoBehaviour
         sp.color = Color.white;
         EnemyAttackArea attackArea = PoolManager.Instance.Pop("EnemyAttackArea") as EnemyAttackArea;
         attackArea.transform.position = this.transform.position;
+        if (isPlayParticle)
+        {
+            AttackParticle attackParticle = PoolManager.Instance.Pop(particleName) as AttackParticle;
+            attackParticle.transform.position = this.transform.position;
+        }
         yield return new WaitForSeconds(duration);
         PoolManager.Instance.Push(attackArea);
     }
