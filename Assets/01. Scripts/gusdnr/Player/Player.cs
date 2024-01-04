@@ -12,16 +12,14 @@ public class Player : MonoBehaviour
 	public float PlayerDamage = 5;
 	public float PlayerMaxHealth = 5;
 	public float PlayerCurHealth { get; set; }
-	/*
-	[SerializeField] private CharacterStat _characterStat;
-	public CharacterStat Stat => _characterStat;*/
 
 	[Header("АјАн")]
 	[SerializeField] private GameObject ChronoParent;
 	[SerializeField] private Transform CFirePos;
+	[SerializeField] private GameObject CBullet;
 	[SerializeField] private GameObject BoardParent;
 	[SerializeField] private Transform BFirePos;
-	[SerializeField] private GameObject bullet;
+	[SerializeField] private GameObject BBullet;
 	public Transform target;
 	private bool isMoving = false;
 	private float time;
@@ -60,17 +58,17 @@ public class Player : MonoBehaviour
 
 	private void Update()
 	{
+		if (target == null)
+		{
+			if (GameManager.Instance != null) target = GameManager.Instance.Target;
+			else target = null;
+		}
+
+		if(target != null) Attack();
 		isMoving = GetComponentInParent<PlayerMove>().isMoving;
 		FlipControl(ChronoParent);
 		FlipControl(BoardParent);
-		Attack();
 		playerSP.flipX = (bool)(transform.position.x > target.transform.position.x);
-		if(target != null) Attack();
-
-		if(target == null)
-		{
-			target = GameManager.Instance.Target;
-		}
     }
 	
 	
@@ -110,14 +108,12 @@ public class Player : MonoBehaviour
 
 				if (isleft)
 				{
-					PlayerBullet cb = PoolManager.Instance.Pop("ChronoBullet") as PlayerBullet;
-					cb.transform.position = CFirePos.position;
+					PlayerBullet cb = Instantiate(CBullet, CFirePos.position, Quaternion.identity).GetComponent<PlayerBullet>();
 					cb.Damage = PlayerDamage;
 				}
 				else
 				{
-					PlayerBullet bb = PoolManager.Instance.Pop("BoardBullet") as PlayerBullet;
-					bb.transform.position = BFirePos.position;
+					PlayerBullet bb = Instantiate(BBullet, CFirePos.position, Quaternion.identity).GetComponent<PlayerBullet>();
 					bb.Damage = PlayerDamage;
 				}
 				

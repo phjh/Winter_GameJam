@@ -6,7 +6,7 @@ public class PlayerBullet : PoolableMono
 {
 	public LayerMask WhatIsEnemy;
 	private Transform target;
-	[SerializeField] private float Speed = 3;
+	[SerializeField] private float Speed = 7;
 	
 	public float Damage {  get; set; }
 
@@ -23,12 +23,7 @@ public class PlayerBullet : PoolableMono
 		rb.velocity = (target.position - transform.position).normalized * Speed;
 		Vector2 dir = transform.position - target.position;
 		transform.Rotate(0,0, (Mathf.Atan2(target.position.y - transform.position.y, target.position.x - transform.position.x) * Mathf.Rad2Deg) + 90);
-		Invoke("AutoPush", 5f);
-	}
-
-	private void AutoPush()
-	{
-		PoolManager.Instance.Push(this);
+		Destroy(this, 10f);
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -37,7 +32,7 @@ public class PlayerBullet : PoolableMono
 		{
 			BossMain hitEnemy = collision.gameObject.GetComponent<BossMain>();
 			hitEnemy.GetDamage(Damage);
-			PoolManager.Instance.Push(this);
+			Destroy(this);
 		}
 	}
 
