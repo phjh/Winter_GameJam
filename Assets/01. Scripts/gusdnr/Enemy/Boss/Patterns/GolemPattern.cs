@@ -24,18 +24,17 @@ public class GolemPattern : BossPatternBase
 		if(AttackCoroutine != null)
 		{
 			Debug.LogError("패턴 코루틴이 초기화되지 않았습니다.");
-		}
-		if (AttackCoroutine == null)
-		{
+			StopAllCoroutines();
 			ChangePattern();
 		}
+		ChangePattern();
 	}
 
 	public override void OnDie()
 	{
 		StopAllCoroutines();
 		AttackCoroutine = null;
-		bossMain.SetAnimation("Die");
+		gameObject.SetActive(false);
 		BossPatternBase bossPattern = this;
 		bossPattern.enabled = false;
 	}
@@ -174,7 +173,7 @@ public class GolemPattern : BossPatternBase
 				if (i < KeyManager.Instance.fourthline.Count) KeyManager.Instance.fourthline[i].DamageEvent(time, duration, true, "GroundBigExplosion");
 				if (i + 1 < KeyManager.Instance.fourthline.Count) KeyManager.Instance.fourthline[i + 1].DamageEvent(time, duration, true, "GroundBigExplosion");
 			}
-			yield return new WaitForSeconds(time);
+			yield return new WaitForSeconds(0.3f);
 		}
 		yield return new WaitForSeconds(waitTime);
 		ChangePattern();

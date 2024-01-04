@@ -74,18 +74,21 @@ public class Player : MonoBehaviour
 	
 	private void FlipControl(GameObject FlipObject)
 	{
-		if (transform.position.x > target.transform.position.x)
+		if(target != null)
 		{
-			FlipObject.transform.localScale = new Vector3(1, 1, 1);
-		}
-		else if (transform.position.x < target.transform.position.x)
-		{
-			FlipObject.transform.localScale = new Vector3(1, -1, 1);
-		}
+			if (transform.position.x > target.transform.position.x)
+			{
+				FlipObject.transform.localScale = new Vector3(1, 1, 1);
+			}
+			else if (transform.position.x < target.transform.position.x)
+			{
+				FlipObject.transform.localScale = new Vector3(1, -1, 1);
+			}
 
-		Vector2 dir = FlipObject.transform.position - target.position;
-		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-		FlipObject.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+			Vector2 dir = FlipObject.transform.position - target.position;
+			float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+			FlipObject.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+		}
 	}
 
 	private void Attack()

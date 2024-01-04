@@ -62,7 +62,7 @@ public class BossMain : MonoBehaviour
 		BossBackground.SetActive(true);
 		GameManager.Instance.Keyboard.transform.position = KeyboardPos;
 		GameManager.Instance.Fade.SetTrigger("FadeOut");
-		yield return new WaitForSeconds(2f);
+		yield return new WaitForSeconds(3f);
 		GameManager.Instance.Target = target;
 		yield return new WaitForSeconds(1f);
 		BossPatternRunner.StartPattern();

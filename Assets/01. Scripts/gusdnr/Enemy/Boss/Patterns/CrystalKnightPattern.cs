@@ -276,7 +276,7 @@ public class CrystalKnightPattern : BossPatternBase
 		for (int i = 0; i < count; i++)
 		{
 			SliceDrop(i % 2, time, duration);
-			yield return new WaitForSeconds(0.7f);
+			yield return new WaitForSeconds(0.9f);
 		}
 		yield return new WaitForSeconds(waitTime);
 		ChangePattern();
@@ -317,7 +317,7 @@ public class CrystalKnightPattern : BossPatternBase
 		{
 			keyBase.DamageEvent(0.7f, 0.2f, true, "ThunderPulse");
 		});
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(0.3f);
 		KeyManager.Instance.secondline.ForEach(keyBase =>
 		{
 			keyBase.DamageEvent(0.7f, 0.2f, true, "ThunderPulse");
