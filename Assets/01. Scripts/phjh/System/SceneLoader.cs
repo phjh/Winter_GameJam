@@ -15,7 +15,7 @@ public class SceneLoader : MonoSingleton<SceneLoader>
 
     public void InGame()
     {
-
+        SceneManager.LoadScene(2);
     }
 
 

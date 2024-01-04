@@ -189,8 +189,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.00040000677, y: -0.005100012, z: 0}
-    m_Extent: {x: 0.8539, y: 0.8538, z: 0}
+    m_Center: {x: 0.0019499958, y: 0.00424999, z: 0}
+    m_Extent: {x: 0.85074997, y: 0.85485, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -869,7 +869,7 @@ Camera:
   far clip plane: 1000
   field of view: 34
   orthographic: 1
-  orthographic size: 4
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -894,7 +894,7 @@ Transform:
   m_GameObject: {fileID: 519420028}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.6211858, y: -1.92, z: -6.0413284}
+  m_LocalPosition: {x: -1.01, y: -1.8, z: -6.0413284}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1000,8 +1000,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.0016999841, y: 0.0024999976, z: 0}
-    m_Extent: {x: 0.7382, y: 0.7374, z: 0}
+    m_Center: {x: -0.005950004, y: -0.008000016, z: 0}
+    m_Extent: {x: 0.73105, y: 0.7295, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1161,8 +1161,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.0042999983, y: -0.0020499825, z: 0}
-    m_Extent: {x: 0.7307, y: 0.73605, z: 0}
+    m_Center: {x: -0.00080001354, y: 0.003799975, z: 0}
+    m_Extent: {x: 0.7381, y: 0.7299, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1392,8 +1392,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.0037499964, y: -0.00084999204, z: 0}
-    m_Extent: {x: 0.73595, y: 0.73714995, z: 0}
+    m_Center: {x: -0.0015000105, y: -0.00070002675, z: 0}
+    m_Extent: {x: 0.7378, y: 0.73870003, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1474,8 +1474,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.0019499958, y: 0.00044998527, z: 0}
-    m_Extent: {x: 0.73535, y: 0.73825, z: 0}
+    m_Center: {x: -0.004400015, y: -0.0073999763, z: 0}
+    m_Extent: {x: 0.7327, y: 0.7317, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1556,8 +1556,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.005100012, y: -0.004150003, z: 0}
-    m_Extent: {x: 0.7296, y: 0.72735, z: 0}
+    m_Center: {x: -0.0042999983, y: -0.0028000176, z: 0}
+    m_Extent: {x: 0.7352, y: 0.7333, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -1800,8 +1800,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: 0.004799992, y: 0.00009998679, z: 0}
-    m_Extent: {x: 0.7315, y: 0.73870003, z: 0}
+    m_Center: {x: -0.00075000525, y: 0.0018499792, z: 0}
+    m_Extent: {x: 0.73565, y: 0.73545, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -2721,8 +2721,8 @@ MonoBehaviour:
   m_ShadowVolumeIntensityEnabled: 0
   m_ShadowVolumeIntensity: 0.75
   m_LocalBounds:
-    m_Center: {x: -0.00515002, y: -0.0069000125, z: 0}
-    m_Extent: {x: 0.72985, y: 0.7331, z: 0}
+    m_Center: {x: -0.0013500154, y: 0.0046999753, z: 0}
+    m_Extent: {x: 0.73395, y: 0.73440003, z: 0}
   m_PointLightInnerAngle: 360
   m_PointLightOuterAngle: 360
   m_PointLightInnerRadius: 0
@@ -2782,6 +2782,10 @@ MonoBehaviour:
   DamageEffecter: {fileID: 8824240668074943121, guid: fdab3830c98aeea4e8490a3a915d522a, type: 3}
   immunityMat: {fileID: 2100000, guid: a81fac5758df5f641b787d1a008cd279, type: 2}
   corruptedMat: {fileID: 2100000, guid: 4d6d8aa176c1c6143b34bb952fad2299, type: 2}
+  ImmunityCooltime: 0
+  TeleportCooltime: 0
+  immunitySlider: {fileID: 0}
+  teleportSlider: {fileID: 0}
 --- !u!4 &1987412911
 Transform:
   m_ObjectHideFlags: 0

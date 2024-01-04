@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public enum RowKey
 {
@@ -34,6 +35,11 @@ public class KeyManager : MonoSingleton<KeyManager>
     public Material immunityMat;
     public Material corruptedMat;
 
+    public float ImmunityCooltime;
+    public float TeleportCooltime;
+    public Slider immunitySlider;
+    public Slider teleportSlider;
+
 	private void Start()
 	{
 		for (int i = 0; i < MainBoard.Count; i++)
@@ -52,4 +58,17 @@ public class KeyManager : MonoSingleton<KeyManager>
         key.DeleteConnectedKey();
     }
 
+    private void Update()
+    {
+        if(ImmunityCooltime > 0)
+        {
+            ImmunityCooltime = Mathf.Clamp(ImmunityCooltime - Time.deltaTime, 0, 20);
+            immunitySlider.value = ImmunityCooltime;
+        }
+        if(TeleportCooltime > 0)
+        {
+            TeleportCooltime = Mathf.Clamp(TeleportCooltime - Time.deltaTime, 0, 5);
+            teleportSlider.value = TeleportCooltime;
+        }
+    }
 }

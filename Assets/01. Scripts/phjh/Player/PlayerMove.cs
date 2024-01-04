@@ -39,7 +39,7 @@ public class PlayerMove : MonoBehaviour
             foreach (var key in KeyManager.Instance.MainBoard)
             {
                 if((Input.GetKeyDown(key.InputKeyCode) && !key.Corrupted)){
-                    if (Input.GetKey(KeyCode.LeftControl) && key.gameObject.activeInHierarchy)
+                    if (Input.GetKey(KeyCode.LeftControl) && key.gameObject.activeInHierarchy && KeyManager.Instance.TeleportCooltime == 0)
                     {
                         StartCoroutine(TelePort(key));
                     }
@@ -47,7 +47,7 @@ public class PlayerMove : MonoBehaviour
                     {
                         StartCoroutine(Moving(key));
                     }
-                    else if ( Input.GetKeyDown(KeyCode.Space))
+                    else if ( Input.GetKeyDown(KeyCode.Space) && KeyManager.Instance.ImmunityCooltime == 0)
                     {
                         StartCoroutine(InvalidationArea());
                     }
@@ -76,8 +76,9 @@ public class PlayerMove : MonoBehaviour
     {
         isMoving = true;
         transform.position = key.transform.position;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.1f);
         nowPos = key;
+        KeyManager.Instance.TeleportCooltime = 5;
         isMoving = false;
 	    GameManager.Instance.PlayerPos = nowPos;
     }
@@ -94,6 +95,7 @@ public class PlayerMove : MonoBehaviour
         {
             key.isImmunity = true;
         }
+        KeyManager.Instance.ImmunityCooltime = 20;
         yield return new WaitForSeconds(2f);
         ImmunityKey.isImmunity = false;
         foreach (var key in ImmunityKey.connectedKeys)

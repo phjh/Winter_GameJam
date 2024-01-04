@@ -52,7 +52,7 @@ public class OnlyStartScene : MonoBehaviour
         timeline.Play();
         Destroy(Instantiate(effect,GameManager.Instance.PlayerPos.transform.position + new Vector3(0,0.5f,0), Quaternion.identity),2f);
         yield return new WaitForSeconds(3);
-        SceneLoader.Instance.Tutorial();
+        SceneLoader.Instance.InGame();
     }
 
 

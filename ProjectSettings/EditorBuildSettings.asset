@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/10. Scenes/PusblishFolder/PublishCutScene.unity
+    guid: 1d5455751e0a94c48970ebc4e2b48dc7
+  - enabled: 1
     path: Assets/10. Scenes/PusblishFolder/PublishLitStartScene.unity
     guid: 035bceba3a3fdc842b9be78b5ffd2cf7
   - enabled: 1
