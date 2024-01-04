@@ -11,20 +11,12 @@ public class PlayerMove : MonoBehaviour
     [SerializeField]
     float movetime = 0.5f;
 
+    public bool isTutorial = false;
+
     public KeyBase nowPos;
     public bool isMoving = false;
 
-    [SerializeField]
-    CinemachineVirtualCameraBase cam;
-    [SerializeField]
-    CinemachineBasicMultiChannelPerlin brain;
-    [SerializeField]
-    float amplitude = 1.7f;
-
-    [SerializeField]
-    GameObject collectiveobj;
-    HashSet<int> collectObj;
-    List<GameObject> collectObjInfo;
+    Animator animator;
 
     float movesecond => 1 - Mathf.Log(movetime)/2;
 
@@ -33,11 +25,11 @@ public class PlayerMove : MonoBehaviour
 		nowPos = StartKey;
 		GameManager.Instance.PlayerPos = nowPos;
 		transform.position = StartKey.transform.position;
+        animator = GetComponentInChildren<Animator>();
 	}
 
 	private void Start()
     {
-		brain = cam.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
     }
 
     void Update()
@@ -66,14 +58,18 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator Moving(KeyBase key)
     {
+        if (isTutorial)
+        {
+            GetComponentInChildren<SpriteRenderer>().flipX = (bool)(nowPos.transform.position.x >       key.transform.position.x);
+        }
         isMoving = true;
-        brain.m_AmplitudeGain = 0;
+        animator.SetBool("Move", isMoving);
         transform.DOMove(key.transform.position, movesecond);
         yield return new WaitForSeconds(movesecond);
         nowPos = key;
         isMoving = false;
+        animator.SetBool("Move", isMoving);
 		GameManager.Instance.PlayerPos = nowPos;
-        brain.m_AmplitudeGain = amplitude;
     }
 
     IEnumerator TelePort(KeyBase key)

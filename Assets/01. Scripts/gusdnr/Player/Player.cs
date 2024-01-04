@@ -1,3 +1,4 @@
+using Cinemachine;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,9 +27,13 @@ public class Player : MonoBehaviour
 	bool isleft = true;
 	SpriteRenderer playerSP;
 
+	[SerializeField]
+	CinemachineImpulseSource _impulse;
+    [SerializeField]
+    float amplitude = 1.7f;
 
-	//플레이어 스크립트 내 밸류
-	[HideInInspector] public float PlayerInt;
+    //플레이어 스크립트 내 밸류
+    [HideInInspector] public float PlayerInt;
 	[HideInInspector] public float PlayerMoveSpeed;
 	[HideInInspector] public float PlayerCurHealth;
 	[HideInInspector] public float PlayerDamage;
@@ -103,10 +108,16 @@ public class Player : MonoBehaviour
 					CreateBullet(BFirePos.gameObject);
 				
 				isleft = !isleft;
+				_impulse.GenerateImpulse(amplitude);
+
 				//ChronoBullet bullet = PoolManager.Instance.Pop("Bullet") as ChronoBullet;
 				//bullet.transform.position = transform.position;
 				//PoolManager.Instance.Push(bullet);
             }
+			else
+			{
+				_impulse.GenerateImpulse(0);
+			}
 		}
 		else 
 		{
