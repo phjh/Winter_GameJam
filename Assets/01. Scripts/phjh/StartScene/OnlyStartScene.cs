@@ -27,6 +27,7 @@ public class OnlyStartScene : MonoBehaviour
                 {
                     set.Add(v);
                     lights[i].intensity = intencity;
+                    lights[i + 1].intensity = intencity / 2;
                     lights[i].pointLightOuterRadius = outerRad;
                     break;
                 }
