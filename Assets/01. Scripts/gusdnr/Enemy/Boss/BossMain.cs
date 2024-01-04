@@ -11,6 +11,7 @@ public class BossMain : MonoBehaviour
 
 	[Header("Values")]
 	public float MaxHP;
+	public bool StartInMain = false;
 	private float curHP;
 	public float CuxHP
 	{
@@ -33,9 +34,22 @@ public class BossMain : MonoBehaviour
 
 	private void Start()
 	{
-		GameManager.Instance.Target = target;
+		//GameManager.Instance.Target = target;
+		if(StartInMain) BossPatternRunner.StartPattern();
 		curHP = MaxHP;
-		BossPatternRunner.StartPattern();
+	}
+
+	private void OnEnable()
+	{
+		GameManager.Instance.Target = target;
+	}
+
+	private void Update()
+	{
+		if(Input.GetMouseButtonDown(0))
+		{
+			GetDamage(10);
+		}
 	}
 
 	public void GetDamage(float Damage)
@@ -45,6 +59,7 @@ public class BossMain : MonoBehaviour
 		{
 			Die();
 		}
+
 	}
 
 	public void SetAnimation(string TriggerName)
@@ -54,7 +69,6 @@ public class BossMain : MonoBehaviour
 
 	private void Die()
 	{
-		BossAnimator.SetTrigger("Die");
 		GameManager.Instance.Target = null;
 		BossPatternRunner.OnDie();
 	}

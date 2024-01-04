@@ -56,7 +56,7 @@ public class Player : MonoBehaviour
 		isMoving = GetComponentInParent<PlayerMove>().isMoving;
 		FlipControl(ChronoParent);
 		FlipControl(BoardParent);
-		Attack();
+		if(target != null) Attack();
 	}
 
 	private void FlipControl(GameObject FlipObject)
