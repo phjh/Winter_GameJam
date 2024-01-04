@@ -55,7 +55,7 @@ public class CrystalKnightPattern : BossPatternBase
 		}
 		TempPatternNum = PatternNum;
 		LightColorChanger.Instance.ChangeColor(PatternNum);
-		PatternCount++;
+		PatternCount += 1;
 		switch (PatternNum)
 		{
 			case 0:
@@ -73,7 +73,11 @@ public class CrystalKnightPattern : BossPatternBase
 			case 4:
 				AttackCoroutine = ThunderWave(0.4f, 0.1f, 1.5f);
 				break;
+			case 5:
+				AttackCoroutine = SliceThunder(0.9f, 0.3f, Random.Range(2, 6), 2f);
+				break;
 			default:
+				Debug.LogError("보스의 어택 코루틴이 할당되지 않았습니다!");
 				break;
 		}
 		StartCoroutine(AttackCoroutine);
@@ -125,8 +129,14 @@ public class CrystalKnightPattern : BossPatternBase
 		yield return new WaitForSeconds(2f);
 		KeyManager.Instance.MainBoard[(int)RowKey.Y].DamageEvent(0.5f, 2f, true, "Thunder3");
 		KeyManager.Instance.MainBoard[(int)RowKey.B].DamageEvent(0.5f, 2f, true, "Thunder3");
+		int safeArea = Random.Range(0, 6);
 		for (int i = 5; i >= 0; i--)
 		{
+			if(i == safeArea)
+			{
+				yield return new WaitForSeconds(0.2f);
+				continue;
+			}
 			KeyManager.Instance.firstline[i].DamageEvent(time, duration, true, "Thunder3");
 			if(i - 1 >= 0) KeyManager.Instance.secondline[i - 1].DamageEvent(time, duration, true, "Thunder3");
 			if(i - 1 >= 0) KeyManager.Instance.thirdline[i - 1].DamageEvent(time, duration, true, "Thunder3");
@@ -142,8 +152,14 @@ public class CrystalKnightPattern : BossPatternBase
 		yield return new WaitForSeconds(2f);
 		KeyManager.Instance.MainBoard[(int)RowKey.Y].DamageEvent(0.5f, 2f, true, "Thunder2");
 		KeyManager.Instance.MainBoard[(int)RowKey.B].DamageEvent(0.5f, 2f, true, "Thunder2");
+		int safeArea = Random.Range(6, 12);
 		for (int i = 6; i < 12; i++)
 		{
+			if (i == safeArea)
+			{
+				yield return new WaitForSeconds(0.2f);
+				continue;
+			}
 			KeyManager.Instance.firstline[i].DamageEvent(time, duration, true, "Thunder2");
 			KeyManager.Instance.secondline[i - 1].DamageEvent(time, duration, true, "Thunder2");
 			KeyManager.Instance.thirdline[i - 1].DamageEvent(time, duration, true, "Thunder2");
@@ -203,31 +219,31 @@ public class CrystalKnightPattern : BossPatternBase
 		{
 			if(i % 2 == 0)
 			{
-				if(i * 2 <= 12) KeyManager.Instance.firstline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
+				if(i * 2 < 12) KeyManager.Instance.firstline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
 				if (i * 2 + 1 < 12) KeyManager.Instance.firstline[i * 2 + 1].DamageEvent(time, duration, true, "ThunderPulse");
 				yield return new WaitForSeconds(0.1f);
-				if (i * 2 <= 12) KeyManager.Instance.secondline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
+				if (i * 2 < 12) KeyManager.Instance.secondline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
 				if (i * 2 + 1 < 12) KeyManager.Instance.secondline[i * 2 + 1].DamageEvent(time, duration, true, "ThunderPulse");
 				yield return new WaitForSeconds(0.1f);
-				if (i * 2 <= 12) KeyManager.Instance.thirdline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
+				if (i * 2 < 12) KeyManager.Instance.thirdline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
 				if (i * 2 + 1 < 12) KeyManager.Instance.thirdline[i * 2 + 1].DamageEvent(time, duration, true, "ThunderPulse");
 				yield return new WaitForSeconds(0.1f);
-				if (i * 2 <= 12) KeyManager.Instance.fourthline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
+				if (i * 2 < 12) KeyManager.Instance.fourthline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
 				if (i * 2 + 1 < 12) KeyManager.Instance.fourthline[i * 2 + 1].DamageEvent(time, duration, true, "ThunderPulse");
 				yield return new WaitForSeconds(0.1f);
 			}
 			else
 			{
-				if (i * 2 <= 12) KeyManager.Instance.fourthline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
+				if (i * 2 < 12) KeyManager.Instance.fourthline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
 				if (i * 2 + 1 < 12) KeyManager.Instance.fourthline[i * 2 + 1].DamageEvent(time, duration, true, "ThunderPulse");
 				yield return new WaitForSeconds(0.1f);
-				if (i * 2 <= 12) KeyManager.Instance.thirdline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
+				if (i * 2 < 12) KeyManager.Instance.thirdline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
 				if (i * 2 + 1 < 12) KeyManager.Instance.thirdline[i * 2 + 1].DamageEvent(time, duration, true, "ThunderPulse");
 				yield return new WaitForSeconds(0.1f);
-				if (i * 2 <= 12) KeyManager.Instance.secondline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
+				if (i * 2 < 12) KeyManager.Instance.secondline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
 				if (i * 2 + 1 < 12) KeyManager.Instance.secondline[i * 2 + 1].DamageEvent(time, duration, true, "ThunderPulse");
 				yield return new WaitForSeconds(0.1f);
-				if (i * 2 <= 12) KeyManager.Instance.firstline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
+				if (i * 2 < 12) KeyManager.Instance.firstline[i * 2].DamageEvent(time, duration, true, "ThunderPulse");
 				if (i * 2 + 1 < 12) KeyManager.Instance.firstline[i * 2 + 1].DamageEvent(time, duration, true, "ThunderPulse");
 				yield return new WaitForSeconds(0.1f);				
 			}
@@ -237,8 +253,36 @@ public class CrystalKnightPattern : BossPatternBase
 		ChangePattern();
 	}
 
+	private void SliceDrop(int num, float time, float duration)
+	{
+		for (int i = num; i < 12; i += 2)
+		{
+			KeyManager.Instance.firstline[i].DamageEvent(time, duration, true, "Thunder2");
+			KeyManager.Instance.secondline[i].DamageEvent(time, duration, true, "Thunder2");
+			KeyManager.Instance.thirdline[i].DamageEvent(time, duration, true, "Thunder2");
+			KeyManager.Instance.fourthline[i].DamageEvent(time, duration, true, "Thunder2");
+		}
+	}
+
+	private IEnumerator SliceThunder(float time, float duration, int count = 2, float waitTime = 1f)
+	{
+		yield return new WaitForSeconds(2f);
+		for (int i = 0; i < count; i++)
+		{
+			SliceDrop(i % 2, time, duration);
+			yield return new WaitForSeconds(0.7f);
+		}
+		yield return new WaitForSeconds(waitTime);
+		ChangePattern();
+	}
+
 	private IEnumerator ThunderBurst(float time, float duration, float waitTime = 1f)
 	{
+		if(PassiveCoroutine != null)
+		{
+			StopCoroutine(PassiveCoroutine);
+			PassiveCoroutine = null;
+		}
 		int thunderNum;
 		string particleName;
 		yield return new WaitForSeconds(2f);
@@ -248,15 +292,22 @@ public class CrystalKnightPattern : BossPatternBase
 			particleName = "Thunder" + thunderNum.ToString();
 			KeyManager.Instance.firstline[i].DamageEvent(time, duration, true, particleName);
 			KeyManager.Instance.secondline[i].DamageEvent(time, duration, true, particleName);
-			KeyManager.Instance.thirdline[i].DamageEvent(time, duration, true, particleName);
-			KeyManager.Instance.fourthline[i].DamageEvent(time, duration, true, particleName);
 			if(i <= 11 - i)KeyManager.Instance.firstline[11 - i].DamageEvent(time, duration, true, particleName);
 			if(i <= 10 - i)KeyManager.Instance.secondline[10 -i].DamageEvent(time, duration, true, particleName);
-			if(i <= 9 - i)KeyManager.Instance.thirdline[9 - i].DamageEvent(time, duration, true, particleName);
-			if(i <= 8 - i)KeyManager.Instance.fourthline[8 - i].DamageEvent(time, duration, true, particleName);
 			yield return new WaitForSeconds(0.4f);
 		}
+		for (var i = RowKey.A; i <= RowKey.Semicolon; i++)
+		{
+			KeyManager.Instance.MainBoard[(int)i].DamageEvent(time, duration, true, "Thunder1");
+			KeyManager.Instance.MainBoard[(int)RowKey.Semicolon + (int)RowKey.A - (int)i].DamageEvent(time, duration, true, "Thunder1");
+			yield return new WaitForSeconds(0.3f);
+		}
+		KeyManager.Instance.fourthline.ForEach(keyBase =>
+		{
+			keyBase.DamageEvent(0.7f, 0.2f, true, "ThunderPulse");
+		});
 		yield return new WaitForSeconds(waitTime);
+		if(PassiveCoroutine == null) UpdatePattern();
 		ChangePattern();
 	}
 

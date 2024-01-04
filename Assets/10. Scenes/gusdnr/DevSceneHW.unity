@@ -8145,7 +8145,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bb1636c5ce740c043bb7e5b25521cd89, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxPatternValue: 5
+  MaxPatternValue: 6
 --- !u!114 &1856133502
 MonoBehaviour:
   m_ObjectHideFlags: 0
