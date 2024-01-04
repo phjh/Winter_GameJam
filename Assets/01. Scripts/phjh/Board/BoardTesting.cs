@@ -41,16 +41,16 @@ public class BoardTesting : MonoBehaviour
 			   StartCoroutine(AttackCoroutine);
             }
         }
-        if (Input.GetMouseButtonDown(1))
-        {
-            for (var i = RowKey.A; i < RowKey.Semicolon; i++)
-            {
-                //KeyManager.Instance.MainBoard[(int)RowKey.S].
+        //if (Input.GetMouseButtonDown(1))
+        //{
+        //    for (var i = RowKey.A; i < RowKey.Semicolon; i++)
+        //    {
+        //        //KeyManager.Instance.MainBoard[(int)RowKey.S].
                 
-                KeyManager.Instance.MainBoard[(int)i].gameObject.SetActive(true);
-                KeyManager.Instance.AddConnectKeys(KeyManager.Instance.MainBoard[(int)i]);
-            }
-        }
+        //        KeyManager.Instance.MainBoard[(int)i].gameObject.SetActive(true);
+        //        KeyManager.Instance.AddConnectKeys(KeyManager.Instance.MainBoard[(int)i]);
+        //    }
+        //}
     }
 
 
