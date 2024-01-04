@@ -64,6 +64,7 @@ public class PlayerMove : MonoBehaviour
         }
         isMoving = true;
         animator.SetBool("Move", isMoving);
+        yield return new WaitForSeconds(0.1f);
         transform.DOMove(key.transform.position, movesecond);
         yield return new WaitForSeconds(movesecond);
         nowPos = key;
