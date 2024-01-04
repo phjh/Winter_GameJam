@@ -26,7 +26,7 @@ public class EnemyAttackArea : PoolableMono
 				StartCoroutine("Test");
 				isEndAttack = true;
 				Player player = collision.gameObject.GetComponent<Player>();
-				//player.CalculationHP(-1);
+				player.CalculationHP(-1);
 				Debug.Log($"{player.name} is hurt");
 			}
 		}
