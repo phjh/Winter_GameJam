@@ -9,8 +9,12 @@ public class Player : MonoBehaviour
 {
 
 	[Header("스텟")]
+	public float PlayerDamage = 5;
+	public float PlayerMaxHealth = 6;
+	public float PlayerCurHealth { get; set; }
+	/*
 	[SerializeField] private CharacterStat _characterStat;
-	public CharacterStat Stat => _characterStat;
+	public CharacterStat Stat => _characterStat;*/
 
 	[Header("공격")]
 	[SerializeField] private GameObject ChronoParent;
@@ -32,13 +36,9 @@ public class Player : MonoBehaviour
     [SerializeField]
     float amplitude = 1.7f;
 
-    //플레이어 스크립트 내 밸류
-    [HideInInspector] public float PlayerInt;
-	[HideInInspector] public float PlayerMoveSpeed;
-	[HideInInspector] public float PlayerCurHealth;
-	[HideInInspector] public float PlayerDamage;
-	[HideInInspector] public float PlayerAtkSpeed;
-	[HideInInspector] public float PlayerCriticChance;
+
+	//플레이어 스크립트 내 밸류
+
 
 	private void Awake()
 	{
@@ -47,6 +47,7 @@ public class Player : MonoBehaviour
 
 	private void Start()
 	{
+		PlayerCurHealth = PlayerMaxHealth;
 		if(target == null)
 		{
 			if(GameManager.Instance.Target == null)
@@ -66,6 +67,10 @@ public class Player : MonoBehaviour
 		playerSP.flipX = (bool)(transform.position.x > target.transform.position.x);
 		if(target != null) Attack();
 
+		if(target == null)
+		{
+			target = GameManager.Instance.Target;
+		}
     }
 	
 	
@@ -100,12 +105,21 @@ public class Player : MonoBehaviour
 			}
 			else if(time > attackTime)
 			{
+				//오지홍 <- 이 새끼 메모리 생각한다면서 여기서 줄줄 새는 중
 				attackTime += attackCooltime;
 
 				if (isleft)
-					CreateBullet(CFirePos.gameObject);
+				{
+					PlayerBullet cb = PoolManager.Instance.Pop("ChronoBullet") as PlayerBullet;
+					cb.transform.position = CFirePos.position;
+					cb.Damage = PlayerDamage;
+				}
 				else
-					CreateBullet(BFirePos.gameObject);
+				{
+					PlayerBullet bb = PoolManager.Instance.Pop("BoardBullet") as PlayerBullet;
+					bb.transform.position = BFirePos.position;
+					bb.Damage = PlayerDamage;
+				}
 				
 				isleft = !isleft;
 				_impulse.GenerateImpulse(amplitude);
@@ -126,24 +140,11 @@ public class Player : MonoBehaviour
 		}
 	}
 
-	void CreateBullet(GameObject obj)
-	{
-		Instantiate(bullet, obj.transform.position, Quaternion.identity);
-	}
-	private void SetStat()
-	{
-		PlayerCurHealth = _characterStat.maxHealth.GetValue();
-		PlayerInt = _characterStat.intelligence.GetValue();
-		PlayerMoveSpeed = _characterStat.agility.GetValue();
-		PlayerAtkSpeed = _characterStat.atkSpeed.GetValue();
-		PlayerDamage = _characterStat.damage.GetValue();
-		PlayerCriticChance = _characterStat.criticalChance.GetValue();
-	}
-
-	private void CalculationHP(int value, bool isHardCore = false)
+	public void CalculationHP(int value, bool isHardCore = false)
 	{
 		if(isHardCore && value < 0) Die();
 		PlayerCurHealth += value;
+		Mathf.Clamp(PlayerCurHealth, 0, PlayerMaxHealth);
 		if(PlayerCurHealth <= 0) Die();
 	}
 

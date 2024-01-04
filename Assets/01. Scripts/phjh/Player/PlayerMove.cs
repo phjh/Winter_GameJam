@@ -49,7 +49,7 @@ public class PlayerMove : MonoBehaviour
                     }
                     else if ( Input.GetKeyDown(KeyCode.Space))
                     {
-                        StartCoroutine(GwenIsImmunity());
+                        StartCoroutine(InvalidationArea());
                     }
                 }
             }
@@ -85,7 +85,7 @@ public class PlayerMove : MonoBehaviour
 
     #region 플레이어 스킬
 
-    IEnumerator GwenIsImmunity()   //그면상 (그냥 무적상태)
+    IEnumerator InvalidationArea()   //그면상 (그냥 무적상태)
     {
         KeyBase ImmunityKey;
         ImmunityKey = nowPos;
