@@ -303,7 +303,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76fc6f533b2644348aa9f6476e2c0c10, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Keyboard: {fileID: 0}
+  Keyboard: {fileID: 1480907254}
   Fade: {fileID: 2082172889}
   _poolingList: {fileID: 11400000, guid: 780bea00395840d42adc1d092f75e7f1, type: 2}
   Bosses:
@@ -19575,7 +19575,6 @@ MonoBehaviour:
   KeyboardPos: {x: 0, y: -3, z: 0}
   NextBossNum: 1
   MaxHP: 40
-  StartInMain: 1
 --- !u!1 &1326553763045065004
 GameObject:
   m_ObjectHideFlags: 0
@@ -19627,7 +19626,6 @@ MonoBehaviour:
   KeyboardPos: {x: 0, y: -3, z: 0}
   NextBossNum: 4
   MaxHP: 1000
-  StartInMain: 0
 --- !u!210 &1343436102695175415
 SortingGroup:
   m_ObjectHideFlags: 0
@@ -24868,7 +24866,6 @@ MonoBehaviour:
   KeyboardPos: {x: 3, y: -3, z: 0}
   NextBossNum: 2
   MaxHP: 550
-  StartInMain: 0
 --- !u!1 &1586566461350171311
 GameObject:
   m_ObjectHideFlags: 0
