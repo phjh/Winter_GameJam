@@ -12,6 +12,6 @@ EditorBuildSettings:
     path: Assets/10. Scenes/PusblishFolder/PublishLitStartScene.unity
     guid: 035bceba3a3fdc842b9be78b5ffd2cf7
   - enabled: 1
-    path: Assets/10. Scenes/phjh/TestScene.unity
-    guid: 864d819434394f844bd62997f0945425
+    path: Assets/10. Scenes/PusblishFolder/PublishGameScene.unity
+    guid: d6c2dbfa0d3eb0245810bfae0c5a5fa7
   m_configObjects: {}

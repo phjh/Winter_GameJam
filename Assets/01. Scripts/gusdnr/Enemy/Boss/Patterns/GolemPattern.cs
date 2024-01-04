@@ -25,7 +25,6 @@ public class GolemPattern : BossPatternBase
 		{
 			Debug.LogError("패턴 코루틴이 초기화되지 않았습니다.");
 			StopAllCoroutines();
-			ChangePattern();
 		}
 		ChangePattern();
 	}

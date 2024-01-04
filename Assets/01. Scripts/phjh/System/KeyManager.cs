@@ -40,6 +40,8 @@ public class KeyManager : MonoSingleton<KeyManager>
     public Slider immunitySlider;
     public Slider teleportSlider;
 
+    public List<AudioSource> audios;
+
 	private void Start()
 	{
 		for (int i = 0; i < MainBoard.Count; i++)
@@ -70,5 +72,10 @@ public class KeyManager : MonoSingleton<KeyManager>
             TeleportCooltime = Mathf.Clamp(TeleportCooltime - Time.deltaTime, 0, 5);
             teleportSlider.value = TeleportCooltime;
         }
+    }
+
+    public void KeyInputSound(int n)
+    {
+        audios[n].Play();
     }
 }

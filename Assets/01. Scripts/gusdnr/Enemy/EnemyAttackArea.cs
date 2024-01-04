@@ -23,12 +23,20 @@ public class EnemyAttackArea : PoolableMono
 		{
 			if (collision.CompareTag("Player"))
 			{
-				StartCoroutine("Test");
 				isEndAttack = true;
 				Player player = collision.gameObject.GetComponent<Player>();
 				player.CalculationHP(-1);
 				Debug.Log($"{player.name} is hurt");
+				SceneLoader.Instance.Tutorial();
+                //StartCoroutine(GotHit(collision.GetComponent<Animator>()));
 			}
 		}
 	}
+
+	IEnumerator GotHit(Animator anim)
+	{
+		anim.SetBool("dead", true);
+		yield return	new WaitForSeconds(1f);
+	}
+
 }

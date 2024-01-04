@@ -41,7 +41,7 @@ public class PlayerMove : MonoBehaviour
             foreach (var key in KeyManager.Instance.MainBoard)
             {
                 if((Input.GetKeyDown(key.InputKeyCode) && !key.Corrupted)){
-                    if (Input.GetKey(KeyCode.LeftControl) && key.gameObject.activeInHierarchy && KeyManager.Instance.TeleportCooltime == 0)
+                    if (Input.GetKey(KeyCode.LeftControl) && key.gameObject.activeInHierarchy && KeyManager.Instance.TeleportCooltime < 0.1f)
                     {
                         StartCoroutine(TelePort(key));
                     }
@@ -49,8 +49,9 @@ public class PlayerMove : MonoBehaviour
                     {
                         StartCoroutine(Moving(key));
                     }
-                    else if ( Input.GetKeyDown(KeyCode.Space) && KeyManager.Instance.ImmunityCooltime == 0)
+                    else if ( Input.GetKeyDown(KeyCode.Space) && KeyManager.Instance.ImmunityCooltime < 0.1f)
                     {
+                        Debug.Log("a");
                         StartCoroutine(InvalidationArea());
                     }
                 }
@@ -66,6 +67,7 @@ public class PlayerMove : MonoBehaviour
         }
         isMoving = true;
         animator.SetBool("Move", isMoving);
+        KeyManager.Instance.KeyInputSound(Random.Range(0, KeyManager.Instance.audios.Count));
         yield return new WaitForSeconds(0.1f);
         transform.DOMove(key.transform.position, movesecond);
         yield return new WaitForSeconds(movesecond);
