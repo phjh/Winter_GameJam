@@ -8159,7 +8159,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BossAnimator: {fileID: 1856133500}
-  MaxHP: 1000
+  MaxHP: 100
   StartInMain: 1
 --- !u!1 &1882676227
 GameObject:
