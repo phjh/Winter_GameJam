@@ -13,6 +13,8 @@ public class GameManager : MonoSingleton<GameManager>
 	public GameObject Keyboard;
 	public Animator Fade;
 
+	public bool isFading = false;
+
 	[SerializeField]
 	private PoolingListSO _poolingList;
 
@@ -38,9 +40,11 @@ public class GameManager : MonoSingleton<GameManager>
 	private IEnumerator Setting(int bossNum, bool isStart = false)
 	{
 		if(isStart == false)Fade.SetTrigger("FadeIn");
-		yield return new WaitForSeconds(3f);
+		isFading = true;
+		yield return new WaitForSeconds(2f);
 		Bosses[bossNum].gameObject.SetActive(true);
 		Bosses[bossNum].StartBossPattern();
+		isFading = false;
 	}
 
 	private void CreatePool()

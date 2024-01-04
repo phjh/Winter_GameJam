@@ -26,12 +26,12 @@ public class PlayerMove : MonoBehaviour
 	{
 		nowPos = StartKey;
 		GameManager.Instance.PlayerPos = nowPos;
-		transform.position = StartKey.transform.position;
         animator = GetComponentInChildren<Animator>();
 	}
 
 	private void Start()
     {
+		transform.position = StartKey.transform.position;
     }
 
     void Update()

@@ -60,11 +60,11 @@ public class Player : MonoBehaviour
 	{
 		if (target == null)
 		{
-			if (GameManager.Instance != null) target = GameManager.Instance.Target;
+			if (GameManager.Instance.Target != null) target = GameManager.Instance.Target;
 			else target = null;
 		}
 
-		if(target != null) Attack();
+		if(target != null && !GameManager.Instance.isFading) Attack();
 		isMoving = GetComponentInParent<PlayerMove>().isMoving;
 		FlipControl(ChronoParent);
 		FlipControl(BoardParent);
@@ -113,7 +113,7 @@ public class Player : MonoBehaviour
 				}
 				else
 				{
-					PlayerBullet bb = Instantiate(BBullet, CFirePos.position, Quaternion.identity).GetComponent<PlayerBullet>();
+					PlayerBullet bb = Instantiate(BBullet, BFirePos.position, Quaternion.identity).GetComponent<PlayerBullet>();
 					bb.Damage = PlayerDamage;
 				}
 				
