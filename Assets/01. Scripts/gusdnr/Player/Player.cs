@@ -10,7 +10,7 @@ public class Player : MonoBehaviour
 
 	[Header("½ºÅÝ")]
 	public float PlayerDamage = 5;
-	public float PlayerMaxHealth = 6;
+	public float PlayerMaxHealth = 5;
 	public float PlayerCurHealth { get; set; }
 	/*
 	[SerializeField] private CharacterStat _characterStat;
