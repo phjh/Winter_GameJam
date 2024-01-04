@@ -59,9 +59,11 @@ public class Player : MonoBehaviour
 		FlipControl(BoardParent);
 		Attack();
 		playerSP.flipX = (bool)(transform.position.x > target.transform.position.x);
+		if(target != null) Attack();
 
     }
-
+	
+	
 	private void FlipControl(GameObject FlipObject)
 	{
 		if (transform.position.x > target.transform.position.x)

@@ -2720,7 +2720,7 @@ SortingGroup:
   m_Enabled: 1
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: -2
   m_SortAtRoot: 0
 --- !u!114 &6061375213874592075
 MonoBehaviour:
@@ -2746,7 +2746,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 918a7c15b9b84cf4ea64d4272452e6ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  MaxPatternValue: 4
+  MaxPatternValue: 5
 --- !u!61 &4972550821737325866
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -2804,7 +2804,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ea801a0130eec6b4b8d13489184861dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BossAnimator: {fileID: 0}
   MaxHP: 100
+  StartInMain: 0
 --- !u!1 &3674179028900400131
 GameObject:
   m_ObjectHideFlags: 0

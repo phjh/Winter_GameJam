@@ -33,8 +33,9 @@ public class GolemPattern : BossPatternBase
 
 	public override void OnDie()
 	{
-		AttackCoroutine = null;
 		StopAllCoroutines();
+		AttackCoroutine = null;
+		bossMain.SetAnimation("Die");
 		BossPatternBase bossPattern = this;
 		bossPattern.enabled = false;
 	}
@@ -73,10 +74,13 @@ public class GolemPattern : BossPatternBase
 				AttackCoroutine = SmashGround(0.4f, 0.6f, 1.2f);
 				break;
 			case 2:
-				AttackCoroutine = BoomGround(0.7f, 0.3f, 2f);
+				AttackCoroutine = BoomGround(0.7f, 0.3f, 1.5f);
 				break;
 			case 3:
-				AttackCoroutine = DiagonalBoom(0.6f, 0.2f, 1.5f);
+				AttackCoroutine = DiagonalBoom(0.6f, 0.2f, 1f);
+				break;
+			case 4:
+				AttackCoroutine = CrossBoom(0.4f, 0.2f);
 				break;
 			default:
 				break;
@@ -99,7 +103,7 @@ public class GolemPattern : BossPatternBase
 			if (i > KeyManager.Instance.firstline.Count) break;
 			KeyManager.Instance.firstline[i].DamageEvent(time, duration, true, "GroundBoom");
 			if (i < KeyManager.Instance.secondline.Count) KeyManager.Instance.secondline[i].DamageEvent(time, duration, true, "GroundBoom");
-			yield return new WaitForSeconds(time);
+			yield return new WaitForSeconds(0.1f);
 		}
 		yield return new WaitForSeconds(0.5f);
 		for (var i = 0; i < 10; i++)
@@ -107,10 +111,10 @@ public class GolemPattern : BossPatternBase
 			if (i > KeyManager.Instance.thirdline.Count) break;
 			if (i < KeyManager.Instance.thirdline.Count) KeyManager.Instance.thirdline[i].DamageEvent(time, duration, true, "GroundBoom");
 			if (i < KeyManager.Instance.fourthline.Count) KeyManager.Instance.fourthline[i].DamageEvent(time, duration, true, "GroundBoom");
-			yield return new WaitForSeconds(time);
+			yield return new WaitForSeconds(0.1f);
 		}
 		yield return new WaitForSeconds(waitTime);
-		ChangePattern();
+		ChangePattern(3, true);
 	}
 
 	private void NearAreaAttack(float time, float duration, KeyBase Center, bool centerAttack = false)
@@ -176,6 +180,20 @@ public class GolemPattern : BossPatternBase
 		ChangePattern();
 	}
 
+	private IEnumerator CrossBoom(float time, float duration, float waitTime = 0.5f)
+	{
+		for (int i = 0; i < 12; i++)
+		{
+			KeyManager.Instance.firstline[i].DamageEvent(time, duration, true, "GroundBoom");
+			KeyManager.Instance.secondline[11 - i].DamageEvent(time, duration, true, "GroundBoom");
+			KeyManager.Instance.thirdline[i].DamageEvent(time, duration, true, "GroundBoom");
+			KeyManager.Instance.fourthline[11 - i].DamageEvent(time, duration, true, "GroundBoom");
+			yield return new WaitForSeconds(0.3f);
+		}
+		yield return new WaitForSeconds(waitTime);
+		ChangePattern();
+	}
+
 	private IEnumerator CratorBurst()
 	{
 		NearAreaAttack(0.3f, 2f, KeyManager.Instance.MainBoard[(int)RowKey.Y], true);
@@ -193,7 +211,7 @@ public class GolemPattern : BossPatternBase
 			KeyManager.Instance.secondline[6 + i].DamageEvent(1f, 1.6f, true, "GroundBoom");
 			yield return new WaitForSeconds(0.3f);
 		}
-		yield return new WaitForSeconds(4f);
+		yield return new WaitForSeconds(3f);
 		ChangePattern();
 	}
 	#endregion

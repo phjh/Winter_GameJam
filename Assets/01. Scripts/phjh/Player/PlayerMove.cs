@@ -28,16 +28,21 @@ public class PlayerMove : MonoBehaviour
 
     float movesecond => 1 - Mathf.Log(movetime)/2;
 
-    private void Start()
+	private void Awake()
+	{
+		nowPos = StartKey;
+		GameManager.Instance.PlayerPos = nowPos;
+		transform.position = StartKey.transform.position;
+	}
+
+	private void Start()
     {
-        nowPos = StartKey;
-        transform.position = StartKey.transform.position;
-        brain = cam.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
+		brain = cam.GetComponentInChildren<CinemachineBasicMultiChannelPerlin>();
     }
 
     void Update()
     {
-        if (Input.anyKeyDown && !isMoving)
+		if (Input.anyKeyDown && !isMoving)
         {
             foreach (var key in KeyManager.Instance.MainBoard)
             {
@@ -67,6 +72,7 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(movesecond);
         nowPos = key;
         isMoving = false;
+		GameManager.Instance.PlayerPos = nowPos;
         brain.m_AmplitudeGain = amplitude;
     }
 
@@ -77,6 +83,7 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(0.5f);
         nowPos = key;
         isMoving = false;
+	    GameManager.Instance.PlayerPos = nowPos;
     }
 
 
