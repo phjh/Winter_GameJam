@@ -24,6 +24,7 @@ public class Player : MonoBehaviour
 	[SerializeField]
 	private float attackCooltime=0.1f;
 	bool isleft = true;
+	SpriteRenderer playerSP;
 
 
 	//플레이어 스크립트 내 밸류
@@ -36,7 +37,7 @@ public class Player : MonoBehaviour
 
 	private void Awake()
 	{
-		
+		playerSP = GetComponent<SpriteRenderer>();
 	}
 
 	private void Start()
@@ -57,20 +58,22 @@ public class Player : MonoBehaviour
 		FlipControl(ChronoParent);
 		FlipControl(BoardParent);
 		Attack();
-	}
+		playerSP.flipX = (bool)(transform.position.x > target.transform.position.x);
+
+    }
 
 	private void FlipControl(GameObject FlipObject)
 	{
-		if (transform.position.x > 0)
+		if (transform.position.x > target.transform.position.x)
 		{
 			FlipObject.transform.localScale = new Vector3(1, 1, 1);
 		}
-		else if (transform.position.x < 0)
+		else if (transform.position.x < target.transform.position.x)
 		{
 			FlipObject.transform.localScale = new Vector3(1, -1, 1);
 		}
 
-		Vector3 dir = FlipObject.transform.position - target.position;
+		Vector2 dir = FlipObject.transform.position - target.position;
 		float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
 		FlipObject.transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
 	}
@@ -83,7 +86,7 @@ public class Player : MonoBehaviour
 			if(attackTime > 5)
 			{
 				PlayerMove playerMove = transform.GetComponentInParent<PlayerMove>();
-				playerMove.nowPos.CorruptedKey();
+				StartCoroutine(playerMove.CorruptedKey());
 				attackTime = attackCooltime;
 				time = 0;
 				//대충 여기에 오염 그거 만들기

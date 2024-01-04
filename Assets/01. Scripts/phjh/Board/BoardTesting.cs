@@ -103,8 +103,8 @@ public class BoardTesting : MonoBehaviour
         for (int i = 0; i < 4; i++)
         {
             yield return new WaitForSeconds(time / 4);
-            n = Random.Range(0,KeyManager.Instance.MainBoard[n].connectedKeys.Count) % KeyManager.Instance.MainBoard[n].connectedKeys.Count;
-            nowPos = nowPos.connectedKeys[i];
+            n = Random.Range(0,KeyManager.Instance.MainBoard[n].connectedKeys.Count-1);
+            nowPos = nowPos.connectedKeys[n];
             nowPos.DamageEvent(1, 0.8f);
             foreach (var key in nowPos.connectedKeys)
             {

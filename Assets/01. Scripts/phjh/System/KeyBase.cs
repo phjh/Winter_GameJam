@@ -9,6 +9,7 @@ public class KeyBase : MonoBehaviour
     public List<KeyBase> connectedKeys { get; private set; }
 	private SpriteRenderer sp;
     public bool isImmunity = false;
+    public bool Corrupted = false;
     Material NormalMat;
 
     public void DamageEvent(float time = 1, float duration = 1, bool isPlayParticle = false, string particleName = "") => StartCoroutine(DamageCode(time, duration, isPlayParticle, particleName));
@@ -37,7 +38,11 @@ public class KeyBase : MonoBehaviour
 
     private void Update()
     {
-        if (isImmunity)
+        if (Corrupted)
+        {
+            GetComponentInChildren<SpriteRenderer>().material = KeyManager.Instance.corruptedMat;
+        }
+        else if (isImmunity)
         {
             GetComponentInChildren<SpriteRenderer>().material = KeyManager.Instance.immunityMat;
         }
@@ -84,10 +89,6 @@ public class KeyBase : MonoBehaviour
         PoolManager.Instance.Push(attackArea);
     }
 
-    public void CorruptedKey()
-    {
-
-    }
 
     //±× ÀÌµ¿
     //public List<KeyBase> GetRoute(KeyBase nextKey)

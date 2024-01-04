@@ -14,8 +14,6 @@ public class PlayerMove : MonoBehaviour
     public KeyBase nowPos;
     public bool isMoving = false;
 
-    int nowSkill = 0;
-
     [SerializeField]
     CinemachineVirtualCameraBase cam;
     [SerializeField]
@@ -43,18 +41,19 @@ public class PlayerMove : MonoBehaviour
         {
             foreach (var key in KeyManager.Instance.MainBoard)
             {
-                if (Input.GetKeyDown(key.InputKeyCode) && Input.GetKey(KeyCode.LeftControl) && key.gameObject.activeInHierarchy)
-                {
-                    StartCoroutine(TelePort(key));
-                }
-                else if (Input.GetKeyDown(key.InputKeyCode) && nowPos.connectedKeys.Contains(key))
-                {
-                    StartCoroutine(Moving(key));
-                }
-                else if (Input.GetKeyDown(key.InputKeyCode) && 
-                    (/*Input.GetKeyDown(KeyCode.LeftShift) || Input.GetKeyDown(KeyCode.RightShift) ||*/ Input.GetKeyDown(KeyCode.Space))) 
-                {
-                    StartCoroutine(GwenIsImmunity());
+                if((Input.GetKeyDown(key.InputKeyCode) && !key.Corrupted)){
+                    if (Input.GetKey(KeyCode.LeftControl) && key.gameObject.activeInHierarchy)
+                    {
+                        StartCoroutine(TelePort(key));
+                    }
+                    else if ( nowPos.connectedKeys.Contains(key))
+                    {
+                        StartCoroutine(Moving(key));
+                    }
+                    else if ( Input.GetKeyDown(KeyCode.Space))
+                    {
+                        StartCoroutine(GwenIsImmunity());
+                    }
                 }
             }
         }
@@ -85,7 +84,7 @@ public class PlayerMove : MonoBehaviour
 
     IEnumerator GwenIsImmunity()   //그면상 (그냥 무적상태)
     {
-        KeyBase ImmunityKey = new KeyBase();
+        KeyBase ImmunityKey;
         ImmunityKey = nowPos;
         ImmunityKey.isImmunity = true;
         foreach(var key in ImmunityKey.connectedKeys)
@@ -98,6 +97,18 @@ public class PlayerMove : MonoBehaviour
         {
             key.isImmunity = false;
         }
+    }
+
+    public IEnumerator CorruptedKey()
+    {
+        KeyBase ImmunityKey;
+        ImmunityKey = nowPos;
+        ImmunityKey.Corrupted = true;
+        KeyManager.Instance.DeleteConnectkeys(ImmunityKey);
+        yield return new WaitForSeconds(3);
+
+        ImmunityKey.Corrupted = false;
+        KeyManager.Instance.AddConnectKeys(ImmunityKey);
     }
 
     //IEnumerator CollectAtk()
