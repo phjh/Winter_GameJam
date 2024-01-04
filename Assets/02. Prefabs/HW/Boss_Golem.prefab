@@ -2658,13 +2658,14 @@ GameObject:
   - component: {fileID: 4197332211304746771}
   - component: {fileID: 4972550821737325866}
   - component: {fileID: 2889946804900663817}
+  - component: {fileID: 5657570248758178720}
   m_Layer: 6
   m_Name: Boss_Golem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5535949469844591003
 Transform:
   m_ObjectHideFlags: 0
@@ -2794,6 +2795,18 @@ MonoBehaviour:
   BossAnimator: {fileID: 8206092759125859938}
   MaxHP: 100
   StartInMain: 0
+--- !u!114 &5657570248758178720
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3639445688651538990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c74b40ae7eec3644fa03033726480f16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &3674179028900400131
 GameObject:
   m_ObjectHideFlags: 0

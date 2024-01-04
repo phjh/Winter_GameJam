@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8765533947037865500}
   - component: {fileID: 4905749536314681664}
   - component: {fileID: 8615424922835253898}
+  - component: {fileID: 49535509001744913}
   m_Layer: 0
   m_Name: BoardBullet
   m_TagString: Untagged
@@ -101,7 +102,7 @@ MonoBehaviour:
   WhatIsEnemy:
     serializedVersion: 2
     m_Bits: 64
-  Speed: 3
+  Speed: 7
 --- !u!61 &8615424922835253898
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -147,3 +148,30 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7, y: 0.7}
   m_EdgeRadius: 0
+--- !u!50 &49535509001744913
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7924042988728703463}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0

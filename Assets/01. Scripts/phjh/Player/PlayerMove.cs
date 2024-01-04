@@ -6,6 +6,8 @@ using System.Collections.Generic;
 
 public class PlayerMove : MonoBehaviour
 {
+    //키보드 이동시 플레이어가 전에 서있던 키 위로 같이 이동하도록 수정하기
+
     [SerializeField]
     KeyBase StartKey;
     [SerializeField]

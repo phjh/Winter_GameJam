@@ -1,19 +1,26 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossMain : MonoBehaviour
 {
 	[Header("Components")]
+	public BossHPController HPController;
 	[SerializeField] private Animator BossAnimator;
 	private BossPatternBase BossPatternRunner;
 	private Transform target;
 
+
+		[Header("Objects")]
+	[SerializeField] private GameObject BossBackground;
+
 	[Header("Values")]
+	public Vector3 KeyboardPos;
+	public int NextBossNum;
 	public float MaxHP;
-	public bool StartInMain = false;
 	private float curHP;
-	public float CuxHP
+	public float CurHP
 	{
 		get
 		{
@@ -27,21 +34,13 @@ public class BossMain : MonoBehaviour
 
 	private void Awake()
 	{
-		BossAnimator = GetComponent<Animator>();
+		HPController = GetComponent<BossHPController>();
 		BossPatternRunner = GetComponent<BossPatternBase>();
 		target = transform.Find("target").GetComponent<Transform>();
 	}
 
 	private void Start()
 	{
-		//GameManager.Instance.Target = target;
-		if(StartInMain) BossPatternRunner.StartPattern();
-		curHP = MaxHP;
-	}
-
-	private void OnEnable()
-	{
-		GameManager.Instance.Target = target;
 	}
 
 	private void Update()
@@ -52,14 +51,31 @@ public class BossMain : MonoBehaviour
 		}
 	}
 
+	public void StartBossPattern()
+	{
+		StartCoroutine(SettingBoss());
+	}
+
+	private IEnumerator SettingBoss()
+	{
+		curHP = MaxHP;
+		BossBackground.SetActive(true);
+		GameManager.Instance.Keyboard.transform.position = KeyboardPos;
+		GameManager.Instance.Fade.SetTrigger("FadeOut");
+		yield return new WaitForSeconds(2f);
+		GameManager.Instance.Target = target;
+		yield return new WaitForSeconds(1f);
+		BossPatternRunner.StartPattern();
+	}
+
 	public void GetDamage(float Damage)
 	{
 		curHP -= Damage;
+		HPController.SetFillAmount();
 		if (curHP <= 0)
 		{
 			Die();
 		}
-
 	}
 
 	public void SetAnimation(string TriggerName)
@@ -71,5 +87,13 @@ public class BossMain : MonoBehaviour
 	{
 		GameManager.Instance.Target = null;
 		BossPatternRunner.OnDie();
+		StartCoroutine(BackgroundActiveFalse(1));
+		GameManager.Instance.SetBoss(NextBossNum);
+	}
+
+	private IEnumerator BackgroundActiveFalse(float time)
+	{
+		yield return new WaitForSeconds(time);
+		BossBackground.SetActive(false);
 	}
 }
