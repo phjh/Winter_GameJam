@@ -87,7 +87,7 @@ public class BossMain : MonoBehaviour
 	{
 		GameManager.Instance.Target = null;
 		BossPatternRunner.OnDie();
-		StartCoroutine(BackgroundActiveFalse(1));
+		StartCoroutine(BackgroundActiveFalse(0.2f));
 		GameManager.Instance.SetBoss(NextBossNum);
 	}
 
